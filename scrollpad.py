@@ -34,15 +34,54 @@ class ScrollPad(object):
 		self.pad.erase()
 		self.pad.move(0, 0)
 
-		for char in data:
+		self.write(data)
+
+		self.pad.move(cursor_pos[0], cursor_pos[1])
+		self.refresh()
+
+	def write(self, string):
+		for char in string:
 			self.pad.addch(ord(char))
 			if self.pad.getyx()[1] == self.pad.getmaxyx()[1]:
 				self.pad.move(self.getyx()[0]+1, 0)
 			if self.pad.getyx()[0] == self.pad.getmaxyx()[0]:
 				self.resize(self.pad.getmaxyx()[0] + _resize_margin[0], self.pad.getmaxyx()[1] + _resize_margin[1])
 				break
-		self.pad.move(cursor_pos[0], cursor_pos[1])
-		self.refresh()
+
+
+	def addTag(self, tag):
+		self.tagAttrOn(tag)
+
+		try:
+			logging.debug(repr(tag.contents))
+			for child in tag.contents:
+				self.addTag(child)
+				self.tagAttrOn(tag) # In case it decided to remove an attribute
+
+		except TypeError, e: # No tag.contents
+			self.write(tag.string)
+		except AttributeError, e: # No tag.contents
+			self.write(tag.string)
+
+		self.tagAttrOff(tag)
+
+	def tagAttrOn(self, tag):
+		try:
+			if tag.name in ('b', 'strong'):
+				self.pad.attron(curses.A_BOLD)
+			if tag.name in ('a', 'u'):
+				self.pad.attron(curses.A_UNDERLINE)
+		except AttributeError, e: # Text node
+			pass
+
+	def tagAttrOff(self, tag):
+		try:
+			if tag.name in ('b', 'strong'):
+				self.pad.attroff(curses.A_BOLD)
+			if tag.name in ('a', 'u'):
+				self.pad.attroff(curses.A_UNDERLINE)
+		except AttributeError, e: # Text Node
+			pass
 
 	def refresh(self):
 			self.pad.refresh(self.offset[0], self.offset[1], self.position[0], self.position[1], self.size[0], self.size[1])
