@@ -18,6 +18,13 @@ _blocking_time = 100
 
 
 class ScrollPad(object):
+	'''Each list pushes a value onto this. <ul>s simply push a 0. Upon </ul> it
+	will remove this value. <ol> always pushes 1, and </ol>	will remove this
+	element. A <li> will print the index before it or a	bullet point if zero. If
+	not 0, a <li> will increment the element. This initialization decides what
+	happens if <li> is encountered outside of a list. Change to 1 and it will
+	behave like a <ol>.'''
+	listInfo = [0]
 
 	def __init__(self, buffersize, screensize, position=[0,0]):
 		super(ScrollPad, self).__init__()
@@ -40,24 +47,25 @@ class ScrollPad(object):
 		self.refresh()
 
 	def write(self, string):
-		for char in string:
-			self.pad.addch(ord(char))
-			if self.pad.getyx()[1] == self.pad.getmaxyx()[1]:
-				self.pad.move(self.getyx()[0]+1, 0)
-			if self.pad.getyx()[0] == self.pad.getmaxyx()[0]:
-				self.resize(self.pad.getmaxyx()[0] + _resize_margin[0], self.pad.getmaxyx()[1] + _resize_margin[1])
-				break
-
+		try:
+			for char in string:
+				self.pad.addch(ord(char))
+				if self.pad.getyx()[1] == self.pad.getmaxyx()[1]:
+					self.pad.move(self.getyx()[0]+1, 0)
+				if self.pad.getyx()[0] == self.pad.getmaxyx()[0]:
+					self.resize(self.pad.getmaxyx()[0] + _resize_margin[0], self.pad.getmaxyx()[1] + _resize_margin[1])
+					break
+		except TypeError, e: # Single char?
+			if string is not None:
+				self.pad.addch(ord(string))
 
 	def addTag(self, tag):
 		self.tagAttrOn(tag)
-
 		try:
-			logging.debug(repr(tag.contents))
+			#logging.debug(repr(tag.contents))
 			for child in tag.contents:
+				self.tagPrePrint(tag)
 				self.addTag(child)
-				self.tagAttrOn(tag) # In case it decided to remove an attribute
-
 		except TypeError, e: # No tag.contents
 			self.write(tag.string)
 		except AttributeError, e: # No tag.contents
@@ -65,21 +73,57 @@ class ScrollPad(object):
 
 		self.tagAttrOff(tag)
 
-	def tagAttrOn(self, tag):
+	# Prepare output for printing in case anything got messed up by children.
+	def tagPrePrint(self, tag):
 		try:
 			if tag.name in ('b', 'strong'):
 				self.pad.attron(curses.A_BOLD)
-			if tag.name in ('a', 'u'):
+
+			elif tag.name in ('a', 'u'):
 				self.pad.attron(curses.A_UNDERLINE)
+		
+		except AttributeError, e: # Text node
+			pass
+			#logging.debug("Error: %s\n\tWith tag: %s" % (e, tag))
+
+	# Called before tag is processed
+	def tagAttrOn(self, tag):
+		try:
+			if tag.name == 'ol':
+				pass
+				self.listInfo.append(1)
+				logging.debug("<ol> listInfo: %s" % (self.listInfo,))
+
+			elif tag.name == 'ul':
+				pass
+				self.listInfo.append(0)
+				logging.debug("<ul> listInfo: %s" % (self.listInfo,))
+
+			elif tag.name == 'li':
+				liLen = len(self.listInfo) - 1
+				if self.listInfo[liLen] == 0: # <ul>
+					self.write("* ")
+				else: # <ol>
+					self.write("%s " % (self.listInfo[liLen],))
+					self.listInfo[liLen] += 1
+				logging.debug("<li> listInfo: %s" % (self.listInfo,))
+
 		except AttributeError, e: # Text node
 			pass
 
+	# Called after tag is processed
 	def tagAttrOff(self, tag):
 		try:
 			if tag.name in ('b', 'strong'):
 				self.pad.attroff(curses.A_BOLD)
-			if tag.name in ('a', 'u'):
+
+			elif tag.name in ('a', 'u'):
 				self.pad.attroff(curses.A_UNDERLINE)
+
+			elif tag.name in ('ol', 'ul'):
+				self.listInfo.pop()
+				logging.debug("</[ou]l>")
+
 		except AttributeError, e: # Text Node
 			pass
 
@@ -94,7 +138,7 @@ class ScrollPad(object):
 		self.pad.timeout(_blocking_time)
 		curses.noecho()
 		while True:
-			logging.debug(repr(curses.getsyx()))
+			#logging.debug(repr(curses.getsyx()))
 			charcode = self.pad.getch()
 			if charcode == -1:
 				continue
@@ -115,7 +159,7 @@ class ScrollPad(object):
 					self.refresh()
 
 			elif charcode in (curses.KEY_RIGHT, ord('l')):
-				if self.pad.getyx()[1] < self.pad.getmaxyx()[1]:
+				if self.pad.getyx()[1] < self.pad.getmaxyx()[1] -1:
 					self.pad.move(self.pad.getyx()[0], self.pad.getyx()[1]+1)
 					self.refresh()
 
