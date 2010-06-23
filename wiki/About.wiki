@@ -1,0 +1,35 @@
+#summary The reasons, expectations, and politics of the project.
+#labels Phase-Requirements,Featured
+
+= More than you ever wanted to know about pylynx =
+
+== Why? ==
+Why would anyone want another console web browser? Aren't links et al bad enough as it is?
+Yes, and that's the problem. Text browsers are boring and painful because they're outdated and lack support for any web technology debuted after at least 1980. Also people like to see their ~~hardcore porn~~ baby pictures, but that's another issue.
+
+== What? ==
+Pylynx has one goal: To bring the text browsing experience as close as possible to the level of graphical web browsers.
+
+=== What's so different about pylynx compared to (for example) lynx? ===
+Similarities:
+  * They're all rendered in text.
+  * They were all written by humans in a programming language.
+  * They were all designed to view HTML.
+
+Differences:
+  * Pylynx is written in Python, not C.
+  * Pylynx will use caret browsing as the main interface. If you want tabular browsing, however, you can still use the tab key.
+  * Pylynx will do a good job with messy HTML, dammit! This is a consequence of using BeautifulSoup for SGML parsing.
+  * Pylynx will have a single notification area. Little boxes and shit won't be constantly popping up everywhere.
+    * Pylynx will have a real URL bar, so there will be none of this pussyfooted "here's a text box, now tell me *exactly* where you want to go" business.
+    * Pylynx will tell you *exactly* what it's doing. Always. Are we waiting for user input, resolving, downloading, parsing, DOMifying, rendering, or doing nothing? You're going to know, and it won't annoy the hell out you, either.
+  * Pylynx will make console web browsing cool again.
+  * Pylynx will dramatically improve your sex life.
+  * Pylynx will also do much, much, more.
+
+== Huh? ==
+All code distributed in a "release" of pylynx is licensed under the [http://sam.zoy.org/wtfpl WTFPL.]
+All code hosted under the pylynx repository is free software as defined by the [http://fsf.org/ FSF.]
+
+This is intended to be a ridiculously ambitious project.
+I am well aware of it, so either shut up or lend a keyboard.
