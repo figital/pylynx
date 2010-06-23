@@ -5,6 +5,7 @@
 
 == Why? (The reasons for pylynx) ==
 Why would anyone want another console web browser? Aren't links et al bad enough as it is?
+
 Yes, and that's the problem. Text browsers are boring and painful because they're outdated and lack support for any web technology debuted after at least 1980. Also people like to see their ~~hardcore porn~~ baby pictures, but that's another issue.
 
 == What? (The expectations of pylynx) ==
@@ -29,6 +30,7 @@ Differences:
 
 == Huh? (The politics of pylynx) ==
 All code distributed in a "release" of pylynx is licensed under the [http://sam.zoy.org/wtfpl WTFPL.]
+
 All code hosted under the pylynx repository is free software as defined by the [http://fsf.org/ FSF.]
 
 This is intended to be a ridiculously ambitious project.
