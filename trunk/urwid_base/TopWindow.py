@@ -10,11 +10,13 @@ class TopWindow(urwid.Pile):
 		super(TopWindow, self).__init__((self.titlebar, self.urlbar), self.urlbar)
 
 	def keypress(self, size, key):
-		if key not in ('up', 'down'):
+		if key not in ('up', 'down'): # Stop Pile from changing focus
 			try:
 				super(TopWindow, self).keypress(size, key)
 			except UrlBar.UrlChange:
 				url = self.urlbar.get_edit_text()
+				self.titlebar.status.clear_flags()
+				self.titlebar.status['Downloading'] = True
 				#self.text.set_text("Loading %s..." % url,)
 
 	def set_focus(self, item):
