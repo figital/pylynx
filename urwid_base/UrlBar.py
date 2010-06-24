@@ -9,7 +9,7 @@ class UrlBar(urwid.Edit):
 	select_all = False
 
 	def __init__(self, location=""):
-		super(UrlBar, self).__init__(location)
+		super(UrlBar, self).__init__(edit_text=location, wrap='clip')
 
 	def keypress(self, size, key):
 		if self.select_all:
@@ -58,8 +58,7 @@ class UrlBar(urwid.Edit):
 	def begin_focus(self):
 		self.select_all = True
 		self.preserve_url()
-		self.redraw()
 
 	def redraw(self):
-		self.set_edit_text(self.get_edit_text()) # Really bad, I don't know how to trigger a redraw yet.
+		self._invalidate() # I don't think I should be doing this, but it works.
 
