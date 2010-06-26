@@ -2,7 +2,8 @@ import urwid
 import TitleBar, UrlBar
 
 class TopWindow(urwid.Pile):
-	def __init__(self):
+	def __init__(self, browser):
+		self.browser = browser
 		self.titlebar = TitleBar.TitleBar()
 		#self.text = urwid.Text("Title")
 		self.urlbar = UrlBar.UrlBar()
@@ -14,10 +15,7 @@ class TopWindow(urwid.Pile):
 			try:
 				super(TopWindow, self).keypress(size, key)
 			except UrlBar.UrlChange:
-				url = self.urlbar.get_edit_text()
-				self.titlebar.status.clear_flags()
-				self.titlebar.status['Downloading'] = True
-				#self.text.set_text("Loading %s..." % url,)
+				self.browser.urlbar_navigate()
 
 	def set_focus(self, item):
 		if item is self.urlbar:
