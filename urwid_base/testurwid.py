@@ -1,12 +1,5 @@
 #!/usr/bin/python
-import urwid
-import TopWindow
+import Browser
 
-palette = [('highlighted', 'default,standout', 'default', 'default'),]
-
-root = TopWindow.TopWindow()
-fill = urwid.Filler(root, 'top')
-loop = urwid.MainLoop(fill, palette)
-loop.run()
-
+browser = Browser.Browser()
 
