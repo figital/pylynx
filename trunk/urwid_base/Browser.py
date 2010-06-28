@@ -1,5 +1,7 @@
 import urllib2
+import xml.dom.minidom
 import urwid
+import BeautifulSoup
 import TopWindow
 
 class Browser(object):
@@ -19,6 +21,14 @@ class Browser(object):
 		self.display.titlebar.status['Downloading'] = True
 		source = fetchSource(location)
 		self.display.titlebar.status['Downloading'] = False
+		self.display.titlebar.status['Parsing'] = True
+		soup = BeautifulSoup.BeautifulSoup(source, convertEntities=BeautifulSoup.BeautifulSoup.ALL_ENTITIES)
+		
+		for script in soup.findAll(name='script'):
+			script.replaceWith(BeautifulSoup.CData(str(script.string)))
+
+		dom = xml.dom.minidom.parseString(str(soup.html))
+		self.display.titlebar.status['Parsing'] = False
 
 def fetchSource(location):
 	if location[0:8] == 'file:///':

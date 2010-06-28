@@ -1,0 +1,1487 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> 
+ 
+<html> 
+<head> 
+<script type="text/javascript" src="http://static.typepad.com/.shared:v25.4:typepad:en_us/js/yui/yahoo-dom-event.js,/js/sixatrack-loader.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+ 
+<title>Coding Horror</title> 
+ 
+<link rel="stylesheet" href="http://www.codinghorror.com/blog/styles-site.css" type="text/css" /> 
+<link rel="stylesheet" href="http://www.codinghorror.com/blog/styles-site-mobile.css" type="text/css" media="handheld" /> 
+<link rel="stylesheet" href="http://www.codinghorror.com/blog/styles-site-print.css" type="text/css" media="print" /> 
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/codinghorror/" /> 
+<link rel="shortcut icon" href="/favicon.ico" /> 
+ 
+<link rel="openid.server" href="http://www.myopenid.com/server"> 
+<link rel="openid.delegate" href="http://codinghorror.myopenid.com/"> 
+
+<meta name="google-site-verification" content="sl0m9SU_4V0JcvjWlOX4dUFBR6VS2P4tlxjJMo0gphU" />
+
+</head> 
+ 
+<body> 
+ 
+<div class="blog" style="margin-top:10px;"> 
+<div style="float:left;"> 
+<a href="http://www.codinghorror.com/blog/"><img src="http://www.codinghorror.com/blog/images/coding-horror-official-logo-small.png" alt="I &lt;3 Steve McConnell" border="0" height="91" width="100"></a>*
+</div> 
+<div style="float:left; margin-top:10px;"> 
+<a href="http://www.codinghorror.com/blog/"><img alt="Coding Horror" src="http://www.codinghorror.com/blog/images/coding-horror-text.png" border="0" height="25" width="275"></a><br/> 
+<span class="description">programming and human factors<br/>by Jeff Atwood</span> 
+</div> 
+<div style="float:right; margin-top:20px;"> 
+ 
+<form method="get" action="http://www.google.com/custom" target="_top"> 
+<input type="hidden" name="domains" value="www.codinghorror.com"></input> 
+<label for="sbi" style="display: none">Enter your search terms</label> 
+<input type="text" name="q" size="31" maxlength="255" value="" id="sbi"></input> 
+<label for="sbb" style="display: none">Submit search form</label> 
+<input type="submit" name="sa" value="Search" id="sbb"></input><br/> 
+<input type="radio" name="sitesearch" value="" id="ss0"></input> 
+<label for="ss0" title="Search the Web">Web</label></td> 
+<input type="radio" name="sitesearch" value="www.codinghorror.com" checked id="ss1"></input> 
+<label for="ss1" title="Search www.codinghorror.com">Coding Horror</label> 
+<input type="hidden" name="client" value="pub-6424649804324178"></input> 
+<input type="hidden" name="forid" value="1"></input> 
+<input type="hidden" name="ie" value="ISO-8859-1"></input> 
+<input type="hidden" name="oe" value="ISO-8859-1"></input> 
+<input type="hidden" name="safe" value="active"></input> 
+<input type="hidden" name="cof" value="GALT:#0066CC;GL:1;DIV:#FFFFFF;VLC:A2427C;AH:center;BGC:FFFFFF;LBGC:FFFFFF;ALC:666666;LC:666666;T:000000;GFNT:0066CC;GIMP:0066CC;LH:50;LW:344;L:http://www.codinghorror.com/blog/images/codinghorror-search-logo1.png;S:http://www.codinghorror.com/blog/;FORID:1"></input> 
+<input type="hidden" name="hl" value="en"></input> 
+</form> 
+ 
+</div> 
+</div> 
+<br clear="all" /> 
+ 
+ 
+<div id="content"> 
+<div class="blog"> 
+
+
+
+ 
+	
+	<h2 class="date"> 
+		June 21, 2010
+	</h2> 
+	
+ 
+	<div class="blogbody"> 
+	
+	<a name="whatever_happened_to_voice_recognition"></a> 
+	<h3 class="title"><a href="http://www.codinghorror.com/blog/2010/06/whatever-happened-to-voice-recognition.html" class="title-link">Whatever Happened to Voice Recognition?</a></h3> 
+	
+
+<p>
+Remember that Scene in <a href="http://www.imdb.com/title/tt0092007/">Star Trek IV</a> where Scotty tried to use a Mac Plus?
+<p>
+<a href="http://www.youtube.com/watch?v=19BWJQ8kjrw"><img class="asset  asset-image at-xid-6a0120a85dcdae970b013484aecc1a970c" alt="Star-trek-4-apple-mac-plus" title="Star-trek-4-apple-mac-plus" src="http://www.codinghorror.com/.a/6a0120a85dcdae970b013484aecc1a970c-800wi" border="0" /></a>
+<p>
+Using a mouse or keyboard to control a computer? Don't be silly. In the future, clearly there's only one way computers will be controlled: by <b>speaking to them</b>.
+<p>
+There's only <a href="http://robertfortner.posterous.com/the-unrecognized-death-of-speech-recognition">one teeny-tiny problem</a> with this magical future world of computers we control with our voices.
+<p>
+<img class="asset  asset-image at-xid-6a0120a85dcdae970b0133f186ffd9970b image-full" alt="Voice-recognition-accuracy-rate-over-time" title="Voice-recognition-accuracy-rate-over-time" src="http://www.codinghorror.com/.a/6a0120a85dcdae970b0133f186ffd9970b-800wi" border="0"  />
+<p>
+It doesn't work.
+<p>
+Despite ridiculous, <a href="http://www.codinghorror.com/blog/2006/12/moores-law-in-practical-terms.html">order of magnitude increases in computing power</a> over the last decade, we can't figure out how to get speech recognition accuracy above 80% -- when the baseline <i>human</i> voice transcription accuracy rate is anywhere from 96% to 98%!
+<p>
+<blockquote>
+In 2001 recognition accuracy topped out at 80%, far short of HAL-like levels of comprehension. Adding data or computing power made no difference. Researchers at Carnegie Mellon University checked again in 2006 and found the situation <a href="http://www.cs.brandeis.edu/~marc/misc/proceedings/lrec-2006/pdf/802_pdf.pdf">unchanged</a>. With human discrimination as high as 98%, the unclosed gap left little basis for conversation. But sticking to a few topics, like numbers, helped. Saying “one” into the phone works about as well as pressing a button, approaching 100% accuracy. But loosen the vocabulary constraint and recognition begins to drift, turning to vertigo in the wide-open vastness of linguistic space.
+</blockquote>
+<p>
+As Robert Fortner explained in <a href="http://robertfortner.posterous.com/the-unrecognized-death-of-speech-recognition">Rest in Peas: The Unrecognized Death of Speech Recognition</a>, after all these years, we're desperately far away from any sort of universal speech recognition that's useful or practical.
+<p>
+Now, we do have to clarify that we're talking about universal recognition: saying <i>anything</i> to a computer, and having it reliably convert that into a valid, accurate text representation. When you constrain the voice input to a more limited vocabulary -- say, just numbers, or only the names that happen to be in your telephone's address book -- it's not unreasonable to expect a high level of accuracy. I tend to think of this as "voice control" rather than "voice recognition".
+<p>
+Still, I think we're avoiding the real question: <b>is voice control, even hypothetically <i>perfect</i> voice control, more effective than the lower tech alternatives?</b> In my experience, speech is one of the least effective, inefficient forms of communicating with other human beings. By that, I mean ...
+<ul>
+<li>typical spoken communication tends to be off-the-cuff and ad-hoc. Unless you're extremely disciplined, on average you will be unclear, rambling, and excessively verbose.
+<li>people tend to hear about half of what you say at any given time. <a href="http://www.codinghorror.com/blog/2006/03/the-value-of-repetition-again.html">If you're lucky</a>.
+<li>spoken communication puts a highly disproportionate burden on the listener. Compare the time it takes to process a voicemail versus the time it takes to read an email.
+</ul>
+<p>
+I am by no means <i>against</i> talking with my fellow human beings. I have a very deep respect for those rare few who are great communicators in the challenging medium of conversational speech. Though we've all been trained literally from birth how to use our voices to communicate, <b>voice communication remains filled with pitfalls and misunderstandings</b>. Even in the best of conditions.
+<p>
+So why in the world -- outside of a disability -- would I want to extend the creaky, rickety old bridge of voice communication to controlling my computer? Isn't there a better way?
+<p>
+Robert's <a href="http://robertfortner.posterous.com/the-unrecognized-death-of-speech-recognition">post</a> contains some examples in the comments from voice control enthusiasts:
+<p>
+<blockquote>
+in addition to extremely accurate voice dictation, there are those really cool commands, like being able to say something like "search Google for Balloon Boy" or something like that and having it automatically open up your browser and enter the search term -- something like this is accomplished many times faster than a human could do it. Or, being able to total up a column of numbers in Microsoft Excel by saying simply "total this column" and seeing the results in a blink of an eye, literally.
+</blockquote>
+<p>
+That's funny, because <b>I just fired up the Google app on my iPhone, said "balloon boy" into it, and got .. a search for "blue boy"</b>. I am not making this up. As for the Excel example, total <i>which</i> column? Let's assume you've dealt with the tricky problem of selecting what column you're talking about with only your voice. (I'm sorry, was it D5? B5?) Wouldn't it be many times faster to click the toolbar icon with your mouse, or press the keyboard command equivalent, to sum the column -- rather than methodically and tediously saying the words "sum this column" out loud?
+<p>
+I'm also trying to imagine a room full of people controlling their computers or phones using their voices. It's difficult enough to get work done in today's chatty work environments without the added burden of a floor full of people saying <a href="http://www.youtube.com/watch?v=Vxq9yj2pVWk">"zoom ... enhance"</a> to their computers all day long. Wouldn't we all end up hoarse <i>and</i> deaf?
+<p>
+Let's look at another practical example -- YouTube's <a href="http://googlesystem.blogspot.com/2009/11/youtube-audio-transcription.html">automatic speech recognition feature</a>. I clicked through to <a href="http://www.youtube.com/ucberkeley#p/u/0/BL9gmMzpRr4">the first UC Berkeley video</a> with this feature, clicked the CC (closed caption) icon, and immediately got .. this.
+<p>
+<img class="asset  asset-image at-xid-6a0120a85dcdae970b013484af2ad3970c" alt="Uc-berkeley-physics-lecture" title="Uc-berkeley-physics-lecture" src="http://www.codinghorror.com/.a/6a0120a85dcdae970b013484af2ad3970c-800wi" border="0"  />
+<p>
+"Light exerts force on matter". But according to Google's automatic speech recognition, it's "like the search for some matter". Unsurprisingly, it does not get better from there. You'd be way more confused than educated if you had to learn this lecture from the automatic transcription.
+<p>
+Back when Joel Spolsky and I <a href="http://itc.conversationsnetwork.org/series/stackoverflow.html">had a podcast together</a>, <b>a helpful listener suggested using speech recognition to get a basic podcast transcript going</b>. Everything I knew about voice recognition told me this wouldn't help, but harm. What's worse: transcribing everything by hand, from scratch -- or correcting every third or fourth word in an auto-generated machine transcript? Maybe it's just me, but the friction of the huge error rate inherent in the machine transcript seems far more intimidating than a blank slate human transcription. The humans may not be particularly efficient, but they all <i>add</i> value along the way -- collective human judgment can editorially improve the transcript, by removing all the duplication, repetition, and "ums" of a literal, by-the-book transcription.
+<p>
+In 2004, Mike Bliss <a href="http://www.theblisspages.com/cms.php?mbid=147">composed a poem about voice recognition</a>. He then read it to voice recognition software on his PC, and rewrote it as recognized.
+<p>
+<table width="600" cellpadding="4" cellspacing="4">
+<tr>
+<td valign="top">
+a poem by Mike Bliss<br>
+<br>
+like a baby, it listens<br>
+it can't discriminate<br>
+it tries to understand<br>
+it reflects what it thinks you say<br>
+it gets it wrong... sometimes<br>
+sometimes it gets it right.<br>
+One day it will grow up,<br>
+like a baby, it has potential<br>
+will it go to work?<br>
+will it turn to crime?<br>
+you look at it indulgently.<br>
+you can't help loving it, can you?<br>
+</td>
+<td valign="top">
+a poem by like myth<br>
+<br>
+like a baby, it nuisance<br>
+it can't discriminate<br>
+it tries to oven<br>
+it reflects lot it things you say<br>
+it gets it run sometimes<br>
+sometimes it gets it right<br>
+won't day it will grow bop<br>
+Ninth a baby, it has provincial<br>
+will it both to look?<br>
+will it the two crime?<br>
+you move at it inevitably<br>
+you can't help loving it, cannot you?<br>
+</td>
+</tr>
+</table>
+<p>
+The real punchline here is that Mike re-ran the experiment in 2008, and after 5 minutes of voice training, <b>the voice recognition got all but 2 words of the original poem correct!</b>
+<p>
+I suspect that's still not good enough in the face of the existing simpler alternatives. Remember handwriting recognition? It was all the rage in the era of the <a href="http://en.wikipedia.org/wiki/Newton_(platform)">Apple Newton</a>. 
+<p>
+<img class="asset  asset-image at-xid-6a0120a85dcdae970b013484af3871970c image-full" alt="Doonesbury-newton" title="Doonesbury-newton" src="http://www.codinghorror.com/.a/6a0120a85dcdae970b013484af3871970c-800wi" border="0"  /></a>
+<p>
+It wasn't as bad as Doonesbury made it out to be. I learned <a href="http://en.wikipedia.org/wiki/Graffiti_(Palm_OS)">Palm's Graffiti</a> handwriting recognition language and got fairly proficient with it. <b>More than ten years later, you'd expect to see <i>massively</i> improved handwriting recognition of some sort in today's iPads and iPhones and iOthers, right?</b> Well, maybe, if by "massively improved" you mean "nonexistent".
+<p>
+While it still surely has its niche uses, I personally don't miss handwriting recognition. Not even a little. And I can't help wondering if voice recognition will go the same way.
+<p>
+<table> 
+<tr><td class="welovecodinghorror"> 
+[advertisement] <a href="http://www.atlassian.com/software/jira/?utm_source=Coding%2BHorror&utm_medium=Text%2BAd&utm_campaign=JIRA%2B4" rel="nofollow">JIRA 4</a> - Simplify bug tracking for everyone involved. <a href="http://www.atlassian.com/software/jira/?utm_source=Coding%2BHorror&utm_medium=Text%2BAd&utm_campaign=JIRA%2B4" rel="nofollow">Get started</a> from $10 for 10 users »  
+</td></tr> 
+</table> 
+<p>
+
+	
+
+<!-- ad unit -->
+<!-- this is where the inline ad unit will go -->
+<!-- ad unit -->	
+	
+	
+	<div class="posted">Posted by Jeff Atwood &nbsp;&nbsp; 
+		
+			<!-- comment count -->
+				<a href="http://www.codinghorror.com/blog/2010/06/whatever-happened-to-voice-recognition.html#comments">88 Comments</a>
+			
+		
+		
+		
+	</div> 
+	
+	</div>	
+ 
+
+<div>
+	
+</div>
+
+
+ 
+	
+	<h2 class="date"> 
+		June  1, 2010
+	</h2> 
+	
+ 
+	<div class="blogbody"> 
+	
+	<a name="the_vast_and_endless_sea"></a> 
+	<h3 class="title"><a href="http://www.codinghorror.com/blog/2010/06/the-vast-and-endless-sea.html" class="title-link">The Vast and Endless Sea</a></h3> 
+	
+
+<p>
+After we created Stack Overflow, some people were convinced we had built a marginally better mousetrap for asking and answering questions. The inevitable speculation began: <b>can we use your engine to build a Q&A site about {topic}?</b> Our answer was Stack Exchange. Pay us $129 a month (and up), and you too can create a hosted Q&A community on our engine -- for whatever topic you like!
+<p>
+Well, I have a confession to make: my heart was never in Stack Exchange. It was a parallel effort in a parallel universe only tangentially related to my own. There's a whole host of reasons why, but if I had to summarize it in a sentence, I'd say that <b>money is poisonous to communities</b>. That $129/month doesn't sound like much -- and it isn't -- but the commercial nature of the enterprise permeated and distorted everything from the get-go.
+<p>
+(fortunately, the model is changing with <a href="http://blog.stackexchange.com/post/518474918/stack-exchange-2-0">Stack Exchange 2.0</a>, but that's a topic for another blog post.)
+<p>
+Yes, Stack Overflow Internet Services Incorporated&copy;&reg;&trade; is technically a business, even <a href="http://blog.stackoverflow.com/2010/05/announcing-our-series-a/">a venture capital backed business</a> now -- but I didn't co-found it because I wanted to make money. I co-founded it because <b>I wanted to build something cool that made the internet better</b>. Yes, selfishly for myself, of course, but also in conjunction with all of my fellow programmers, because I know <a href="http://www.codinghorror.com/blog/2008/09/stack-overflow-none-of-us-is-as-dumb-as-all-of-us.html">none of us is as dumb as all of us</a>. 
+<p>
+Nobody is participating in Stack Overflow to <i>make money</i>. We're participating in Stack Overflow because &hellip;
+<p>
+<ul>
+<li>We love programming
+<li>We want to leave breadcrumb trails for other programmers to follow so they can avoid making the same dumb mistakes we did
+<li>Teaching peers is one of the best ways to develop mastery
+<li>We can follow our own interests wherever they lead
+<li>We want to collectively build something great for the community with our tiny slices of effort
+</ul>
+<p>
+I don't care how much you pay me, you'll never be able to recreate the incredibly satisfying feeling I get when <b>demonstrating mastery within my community of peers</b>. That's what we do on Stack Overflow: have <i>fun</i>, while making the internet one infinitesimally tiny bit better every day.
+<p>
+So is it any wonder that some claim <a href="http://meta.stackoverflow.com/questions/28642/why-do-i-get-more-satisfaction-out-of-participating-in-so-than-out-of-my-job">Stack Overflow is more satisfying than their real jobs?</a> Not to me. 
+<p>
+If this all seems like a bunch of <b>communist hippie bullcrap</b> to you, I understand. It's hard to explain. But there is quite a bit of science documenting these strange motivations. Let's start with <a href="http://www.ted.com/talks/dan_pink_on_motivation.html">Dan Pink's 2009 TED talk</a>.
+<p>
+<object width="446" height="326"><param name="movie" value="http://video.ted.com/assets/player/swf/EmbedPlayer.swf"></param><param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="always"/><param name="wmode" value="transparent"></param><param name="bgColor" value="#ffffff"></param> <param name="flashvars" value="vu=http://video.ted.com/talks/dynamic/DanielPink_2009G-medium.flv&su=http://images.ted.com/images/ted/tedindex/embed-posters/DanielPink-2009G.embed_thumbnail.jpg&vw=432&vh=240&ap=0&ti=618&introDuration=15330&adDuration=4000&postAdDuration=830&adKeys=talk=dan_pink_on_motivation;year=2009;theme=speaking_at_tedglobal2009;theme=the_creative_spark;theme=not_business_as_usual;event=TEDGlobal+2009;&preAdTag=tconf.ted/embed;tile=1;sz=512x288;" /><embed src="http://video.ted.com/assets/player/swf/EmbedPlayer.swf" pluginspace="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" wmode="transparent" bgColor="#ffffff" width="446" height="326" allowFullScreen="true" allowScriptAccess="always" flashvars="vu=http://video.ted.com/talks/dynamic/DanielPink_2009G-medium.flv&su=http://images.ted.com/images/ted/tedindex/embed-posters/DanielPink-2009G.embed_thumbnail.jpg&vw=432&vh=240&ap=0&ti=618&introDuration=15330&adDuration=4000&postAdDuration=830&adKeys=talk=dan_pink_on_motivation;year=2009;theme=speaking_at_tedglobal2009;theme=the_creative_spark;theme=not_business_as_usual;event=TEDGlobal+2009;"></embed></object>
+<p>
+Dan's talk centers on <a href="http://en.wikipedia.org/wiki/The_Candle_Problem">the candle problem</a>. Given the following three items &hellip;
+<p>
+<ol>
+<li>A candle
+<li>A box of thumbtacks
+<li>A book of matches
+</ol>
+<p>
+&hellip; how can you attach the candle to the wall?
+<p>
+It's not a very interesting problem on its own -- that is, until you try to <b>incentivize</b> teams to solve it:
+<p>
+<blockquote>
+Now I want to tell you about an experiment using the candle problem by a scientist from Princeton named Sam Glucksberg. Here's what he did. 
+<p>
+To the first group, he said, "I'm going to time you to establish norms, averages for how long it typically takes someone to solve this sort of problem."
+<p>
+To the second group, he said, "If you're in the top 25 percent of the fastest times you get five dollars. If you're the fastest of everyone we're testing here today you get 20 dollars." (This was many years ago. Adjusted for inflation, it's a decent sum of money for a few minutes of work.)
+<p>
+Question: How much faster did this group solve the problem?
+<p>
+Answer: It took them, on average, three and a half minutes longer. Three and a half minutes longer. Now this makes no sense, right? I mean, I'm an American. I believe in free markets. That's not how it's supposed to work. If you want people to perform better, you reward them. Give them bonuses, commissions, their own reality show. Incentivize them. That's how business works. But that's not happening here. <b>You've got a monetary incentive designed to sharpen thinking and accelerate creativity -- and it does just the opposite. It dulls thinking and blocks creativity.</b>
+</blockquote>
+<p>
+It turns out that traditional carrot-and-stick incentives are only useful for repetitive, mechanical tasks. The minute you have to do anything even slightly complex that requires even a little problem solving without a clear solution or rules -- those incentives not only don't work, they <i>make things worse!</i>
+<p>
+Pink eventually wrote a book about this, <a href="http://www.amazon.com/dp/1594488843/?tag=codinghorror-20">Drive: The Surprising Truth About What Motivates Us</a>.
+<p>
+<a href="http://www.amazon.com/dp/1594488843/?tag=codinghorror-20"><img alt="Drive by Daniel H. Pink" title="Drive by Daniel H. Pink" src="http://www.codinghorror.com/.a/6a0120a85dcdae970b0134828e3150970c-800wi" style="border:1px solid silver" /></a>
+<p>
+There's no need to read the book; this clever ten minute whiteboard animation will walk you through the main points. If you view only one video today, view this one.
+<p>
+<object width="640" height="385"><param name="movie" value="http://www.youtube.com/v/u6XAPnuFjJc&hl=en_US&fs=1&rel=0"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/u6XAPnuFjJc&hl=en_US&fs=1&rel=0" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="640" height="385"></embed></object>
+<p>
+The concept of <a href="http://www.codinghorror.com/blog/2007/04/is-amazons-mechanical-turk-a-failure.html">intrinsic motivation</a> may not be a new one, but I find that very few companies are brave enough to actually implement them.
+<p>
+<b>I've tried mightily to live up to the ideals that Stack Overflow was founded on when building out my team.</b> I don't care when you come to work or what your schedule is. I don't care <a href="http://www.codinghorror.com/blog/2010/05/on-working-remotely.html">where in the world you live</a> (provided you have a great internet connection). I don't care how you do the work. I'm not going to micromanage you and assign you a queue of task items. There's no need. 
+<p>
+<blockquote>
+If you want to build a ship, don't drum up the men to gather wood, divide the work and give orders. Instead, teach them to yearn for the vast and endless sea.<br>
+&ndash; Antoine de Saint Exupéry
+</blockquote>
+<p>
+Because I know you yearn for the vast and endless sea, just like we do.
+<p>
+<table> 
+<tr><td class="welovecodinghorror"> 
+[advertisement] <a href="http://www.atlassian.com/software/jira/?utm_source=Coding%2BHorror&utm_medium=Text%2BAd&utm_campaign=JIRA%2B4" rel="nofollow">JIRA 4</a> - Simplify bug tracking for everyone involved. <a href="http://www.atlassian.com/software/jira/?utm_source=Coding%2BHorror&utm_medium=Text%2BAd&utm_campaign=JIRA%2B4" rel="nofollow">Get started</a> from $10 for 10 users »  
+</td></tr> 
+</table> 
+
+	
+
+<!-- ad unit -->
+<!-- this is where the inline ad unit will go -->
+<!-- ad unit -->	
+	
+	
+	<div class="posted">Posted by Jeff Atwood &nbsp;&nbsp; 
+		
+			<!-- comment count -->
+				<a href="http://www.codinghorror.com/blog/2010/06/the-vast-and-endless-sea.html#comments">76 Comments</a>
+			
+		
+		
+		
+	</div> 
+	
+	</div>	
+ 
+
+<div>
+	
+</div>
+
+
+ 
+	
+	<h2 class="date"> 
+		May  6, 2010
+	</h2> 
+	
+ 
+	<div class="blogbody"> 
+	
+	<a name="on_working_remotely"></a> 
+	<h3 class="title"><a href="http://www.codinghorror.com/blog/2010/05/on-working-remotely.html" class="title-link">On Working Remotely</a></h3> 
+	
+
+<p>
+When I first <a href="http://www.codinghorror.com/blog/2008/03/choosing-your-own-adventure.html">chose my own adventure</a>, I didn't know what working remotely from home was going to be like. I had never done it before. As <i>programmers</i> go, I'm fairly social. Which still means I'm a borderline sociopath by normal standards. All the same, I was worried that I'd go stir-crazy with no division between my work life and my home life.
+<p>
+Well, I haven't gone stir-crazy yet. I think. But in building Stack Overflow, I have learned a few things about what it means to work remotely -- at least when it comes to programming. Our current team encompasses 5 people, distributed all over the USA, along with the team in NYC.
+<p>
+<img alt="Usa-stack-overflow-team-map" title="Usa-stack-overflow-team-map" src="http://www.codinghorror.com/.a/6a0120a85dcdae970b0133ed51b2e9970b-800wi" border="0"  />
+<p>
+My first mistake was <a href="http://www.codinghorror.com/blog/2007/06/in-programming-one-is-the-loneliest-number.html">attempting to program alone</a>. I had weekly calls with my business partner, <a href="http://www.joelonsoftware.com/">Joel Spolsky</a>, which were quite productive in terms of figuring out what it was we were trying to do together -- but he wasn't writing code. I was coding alone. Really alone. One guy working all by yourself alone. This didn't work <i>at all</i> for me. I was unmoored, directionless, suffering from analysis paralysis, and barely able to get motivated enough to write even a few lines of code. I rapidly realized that I'd made a huge mistake in not <a href="http://www.codinghorror.com/blog/2009/02/whos-your-coding-buddy.html">having a coding buddy</a> to work with.
+<p>
+That situation <a href="http://www.codinghorror.com/blog/2010/01/cultivate-teams-not-ideas.html">rectified itself soon enough</a>, as I was fortunate enough to find one of my favorite old coding buddies was available. Even though Jarrod was in North Carolina and I was in California, the shared source code was the mutual glue that stuck us together, motivated us, and kept us moving forward. To be fair, we also had the considerable advantage of prior history, because we had worked together at a previous job. But the minimum bar to work remotely is to find <b>someone who loves code as much as you do</b>. It's &hellip; enough. Anything else on top of that -- old friendships, new friendships, a good working relationship -- is icing that makes working together all the sweeter. I eventually expanded the team in the same way by adding another old coding buddy, Geoff, who lives in Oregon. And again by adding Kevin, who I didn't know, but had built amazing stuff for us <i>without even being asked to</i>, from Texas. And again by adding Robert, in Florida, who I also didn't know, but spent so much time on every single part of our sites that I felt he had been running alongside our team the whole way, there all along.
+<p>
+The reason remote development worked for us, in retrospect, wasn't just shared love of code. I picked developers who I knew -- I had incontrovertible <i>proof</i> -- were amazing programmers. I'm not saying they're perfect, far from it, merely that they were top programmers by any metric you'd care to measure. <i>That's</i> why they were able to work remotely. Newbie programmers, or competent programmers who are phoning it in, are absolutely not going to have the moxie necessary to get things done remotely -- at least, not without a pointy haired manager, or grumpy old team lead, breathing down their neck. Don't even <i>think</i> about working remotely with anyone who doesn't freakin' <i>bleed</i> ones and zeros, and has a proven track record of getting things done.
+<p>
+While Joel certainly had a lot of high level input into what Stack Overflow eventually became, I only talked to him once a week, at best (these calls were <a href="http://itc.conversationsnetwork.org/series/stackoverflow.html">the genesis of our weekly podcast series</a>). <b>I had a strong, clear vision of what I wanted Stack Overflow to be, and how I wanted it to work.</b> Whenever there was a question about functionality or implementation, my team was able to rally around me and collectively make decisions we liked, and that I personally felt were in tune with this vision. And if you know me at all, you know <a href="http://www.codinghorror.com/blog/2004/10/just-say-no.html">I'm not shy about saying no</a>, either. We were able to build exactly what we wanted, exactly how we wanted.
+<p>
+Bottom line, we were <a href="http://www.youtube.com/results?search_query=we're+on+a+mission+from+god">on a mission from God</a>. And we still are.
+<p>
+So, there are a few basic ground rules for remote development, at least as I've seen it work:
+<p>
+<ul>
+<li>The minimum remote team size is two. Always have a buddy, even if your buddy is on another continent halfway across the world.
+<li>Only grizzled veterans who absolutely <i>love</i> to code need apply for remote development positions. Mentoring of newbies or casual programmers simply doesn't work at all remotely.
+<li>To be effective, remote teams need full autonomy and a leader (PM, if you will) who has a strong vision <i>and</i> the power to fully execute on that vision.
+</ul>
+<p>
+This is all well and good when you have a remote team size of <i>three</i>, as we did for the bulk of Stack Overflow development. And all in the same country. <a href="http://blog.stackoverflow.com/2010/05/announcing-our-series-a/">Now we need to grow the company</a>, and I'd like to grow it in distributed fashion, by hiring other amazing developers from around the world, many of whom I have met through Stack Overflow itself. <p>
+<b>But how do you scale remote development?</b> Joel had some deep seated concerns about this, so I tapped one of my heroes, Miguel de Icaza -- who I'm proud to note is on <a href="http://stackoverflow.com/about/management#advisors">our all-star board of advisors</a> -- and he was generous enough to give us some personal advice based on his experience running the <a href="http://www.mono-project.com/">Mono project</a>, which has dozens of developers distributed all over the world.
+<p>
+<img alt="Time-zone-differences" title="Time-zone-differences" src="http://www.codinghorror.com/.a/6a0120a85dcdae970b0133ed51a674970b-800wi" border="0"  />
+<p>
+At the risk of summarizing mercilessly (and perhaps too much), I'll boil down Miguel's advice the best I can. There are three tools you'll need in place if you plan to grow a large-ish and still functional remote team:
+<p>
+<ol>
+<li><b>Real time chat</b><br>
+<br>
+When your team member lives in Brazil, you can't exactly walk by his desk to ask him a quick question, or bug him about something in his recent checkin. Nope. You need a way to <i>casually</i> ping your fellow remote team members and get a response back quickly. This should be low friction and available to all remote developers at all times. IM, IRC, some web based tool, laser beams, smoke signals, carrier pigeon, two tin cans and a string: whatever. As long as everyone really <i>uses</i> it. <br>
+<p>
+We're currently experimenting with <a href="http://campfirenow.com/">Campfire</a>, but whatever floats your boat and you can get your team to consistently <i>use</i>, will work. Chat is the most essential and omnipresent form of communication you have when working remotely, so you need to make absolutely sure it's functioning before going any further.
+<p>
+<li><b>Persistent mailing list</b><br>
+<br>
+Sure, your remote team may know the details of <i>their</i> project, but what about all the other work going on? How do they find out about that stuff or even know it exists in the first place? You need a virtual bulletin board: a place for announcements, weekly team reports, and meeting summaries. This is where a classic old-school mailing list comes in handy.
+<p>
+We're using <a href="http://groups.google.com/">Google Groups</a> and although it's old school in spades, it works plenty well for this. You can get the emails as they arrive, or view the archived list via the web interface. One word of caution, however. Every time you see something arrive in your inbox from the mailing list you better believe, in your heart of hearts, that it contains useful information. The minute the mailing list becomes just another "whenever I have time to read that stuff", noise engine, or distraction from work &hellip; you've let someone cry wolf too much, and ruined it. So be very careful. Noisy, argumentative, or useless things posted to the mailing list should be punishable by death. Or noogies.
+<p>
+<li><b>Voice and video chat</b><br>
+<p>
+As much as I love ASCII, sometimes faceless ASCII characters just aren't enough to capture the full intentions and feelings of the human being behind them. When you find yourself sending kilobytes of ASCII back and forth, and still are unsatisfied that you're <i>communicating</i>, you should instill a reflexive habit of "going voice" on your team.
+<p>
+Never underestimate the power of actually <i>talking</i> to another human being. I know, I know, the whole reason we got into this programming thing was to <i>avoid</i> talking to other people, but bear with me here. You can't be face to face on a remote team without flying 6 plus hours, and who the heck has that kind of time? I've got work I need to get done! Well, the next best thing to hopping on a plane is to fire up <a href="http://www.skype.com/">Skype</a> and have a little voice chat. Easy peasy. All that human nuance which is totally lost in faceless ASCII characters (yes, even with our old pal <a href="http://en.wikipedia.org/wiki/Emoticon">*&lt;:-)</a>) will come roaring back if you <i>regularly</i> schedule voice chats. I recommend at least once a week at an absolute minimum; they don't have to be long meetings, but it sure helps in understanding the human being behind all those awesome checkins.
+<br>
+</ol>
+<p>
+Nobody hates meetings and process claptrap more than I do, but there is a certain amount of process you'll need to keep a bunch of loosely connected remote teams and developers in sync.
+<p>
+<ol>
+<li><b>Monday team status reports</b><br>
+<p>
+Every Monday, as in <a href="http://www.youtube.com/results?search_query=somebody's+got+a+case+of+the+mondays">somebody's-got-a-case-of-the</a>, each team should produce a brief, summarized rundown of:
+<p>
+<ul>
+<li>What we did <u>last week</u>
+<li>What we're planning to do <u>this week</u>
+<li>Anything that is <u>blocking</u> us or we are <u>concerned</u> about
+</ul>
+<p>
+This doesn't have to be (and in fact <i>shouldn't</i> be) a long report. The briefer the better, but do try to capture all the useful highlights. Mail this to the mailing list every Monday like clockwork. Now, how many "teams" you have is up to you; I don't think this needs to be done at the individual developer level, but you could.
+<p>
+<li><b>Meeting minutes</b><br>
+<p>
+Any time you conduct what you would consider to be a "meeting" with someone else, <u>take minutes</u>! That is, write down what happened in bullet point form, so those remote team members who couldn't be there can benefit from -- or at least hear about -- whatever happened.
+<p>
+Again, this doesn't have to be long, and if you find taking meeting minutes onerous then you're probably doing it wrong. A simple bulleted list of sentences should suffice. We don't need to know every little detail, just the big picture stuff: <u>who</u> was there? What <u>topics</u> were discussed? What <u>decisions</u> were made? What are the <u>next steps</u>?
+</ol>
+<p>
+Both of the above should, of course, be mailed out to the mailing list as they are completed so everyone can be notified. You do have a mailing list, right? Of course you do!
+<p>
+If this seems like a lot of jibba-jabba, well, that's because <b>remote development is hard</b>. It takes discipline to make it all work, certainly more discipline than piling a bunch of programmers into the same cubicle farm. But when you imagine what this kind of intellectual work -- not just programming, but anything where you're working in mostly thought-stuff -- will be like in ten, twenty, even thirty years &hellip; don't you think it will look a lot like what happens every day <i>right now</i> on Stack Overflow? That is, a programmer in Brazil helping a programmer in New Jersey solve a problem?
+<p>
+If I have learned anything from Stack Overflow it is that the world of programming is <a href="http://www.codinghorror.com/blog/2009/03/the-ugly-american-programmer.html">truly global</a>. I am honored to meet these brilliant programmers from every corner of the world, even if only in a small way through a website. Nothing is more exciting for me than the prospect of adding international members to the Stack Overflow team. The development of Stack Overflow should be reflective of what Stack Overflow <i>is</i>: an international effort of like-minded -- and dare I say <i>totally awesome</i> -- programmers. I wish I could hire each and every one of you. OK, maybe I'm a little biased. But to me, that's how awesome the Stack Overflow community is.
+<p>
+I believe <b>remote development represents the future of work</b>. If we have to spend a little time figuring out how this stuff works, and maybe even make some mistakes along the way, it's worth it. As far as I'm concerned, the future is now. Why wait?
+<p>
+<table> 
+<tr><td class="welovecodinghorror"> 
+[advertisement] <a href="http://www.atlassian.com/starter-day/?utm_source=Coding%2BHorror&utm_medium=Text%2BAd&utm_campaign=Starter%2BDay" rel="nofollow">Atlassian Starter Day</a> - Learn how startups like Boxee and Pandora broke through. <a href="http://www.atlassian.com/starter-day/?utm_source=Coding%2BHorror&utm_medium=Text%2BAd&utm_campaign=Starter%2BDay" rel="nofollow">Sign-up today »</a> 
+</td></tr> 
+</table> 
+<p>
+
+	
+
+<!-- ad unit -->
+<!-- this is where the inline ad unit will go -->
+<!-- ad unit -->	
+	
+	
+	<div class="posted">Posted by Jeff Atwood &nbsp;&nbsp; 
+		
+			<!-- comment count -->
+				<a href="http://www.codinghorror.com/blog/2010/05/on-working-remotely.html#comments">67 Comments</a>
+			
+		
+		
+		
+	</div> 
+	
+	</div>	
+ 
+
+<div>
+	
+</div>
+
+
+ 
+	
+	<h2 class="date"> 
+		April 30, 2010
+	</h2> 
+	
+ 
+	<div class="blogbody"> 
+	
+	<a name="whats_wrong_with_css"></a> 
+	<h3 class="title"><a href="http://www.codinghorror.com/blog/2010/04/whats-wrong-with-css.html" class="title-link">What's Wrong With CSS</a></h3> 
+	
+
+<p>
+We're currently in the midst of a <a href="http://www.codinghorror.com/blog/2005/12/the-css-zen-garden-and-aspnet.html">CSS Zen Garden type excerise</a> on our family of Q&A websites, which I affectionately refer to as <a href="http://blog.stackoverflow.com/2009/05/the-stack-overflow-trilogy/">"the Trilogy"</a>:
+<p>
+<ul>
+<li><a href="http://serverfault.com">Server Fault</a>
+<li><a href="http://superuser.com">Super User</a>
+<li><a href="http://stackoverflow.com">Stack Overflow</a>
+<li><a href="http://meta.stackoverflow.com">Meta Stack Overflow</a>
+</ul>
+<p>
+(In case you were wondering, yes, meta <i>is</i> the <a href="http://en.wikipedia.org/wiki/The_Star_Wars_Holiday_Special">Star Wars Holiday Special</a>.)
+<p>
+These sites all run the same core engine, but the logo, domain, and CSS "skin" that lies over the HTML skeleton is different in each case:
+<p>
+<table>
+<tr>
+<td>
+<a href="http://serverfault.com"><img alt="serverfault.com screenshot" title="serverfault screenshot" src="http://www.codinghorror.com/.a/6a0120a85dcdae970b01348044a079970c-800wi" border="0" style="border:1px solid silver" /></a>
+<td>
+<a href="http://superuser.com"><img alt="superuser.com screenshot" title="superuser screenshot" src="http://www.codinghorror.com/.a/6a0120a85dcdae970b01348044a20a970c-800wi" border="0" style="border:1px solid silver" /></a>
+</tr>
+<tr>
+<td>
+<a href="http://meta.stackoverflow.com"><img alt="meta.stackoverflow screenshot" title="meta.stackoverflow screenshot" src="http://www.codinghorror.com/.a/6a0120a85dcdae970b01348044a6f4970c-800wi" border="0"  style="border:1px solid silver" /></a>
+<td>
+<a href="http://stackoverflow.com"><img alt="stackoverflow.com screenshot" title="stackoverflow.com screenshot" src="http://www.codinghorror.com/.a/6a0120a85dcdae970b01348044a788970c-800wi" border="0"   style="border:1px solid silver" />
+</tr>
+</table>
+<p>
+They are not <i>terribly</i> different looking, it's true, but we also want them to be recognizable as a family of sites.
+<p>
+We're working with two amazing designers, <a href="http://www.8164.org/">Jin Yang</a> and <a href="http://uxhero.com/">Nathan Bowers</a>, who are helping us whip the CSS and HTML into shape so they can produce a set of about 10 different Zen Garden designs. As new sites in our network <a href="http://blog.stackexchange.com/post/518474918/stack-exchange-2-0">get democracied into being</a>, these designs will be used as a palette for the community to choose from. (And, later, the community will decide on a domain name and logo as well.)
+<p>
+Anyway, I bring this up not because <i><a href="http://www.google.com/images?q=my+pokemans+let+me+show+you">my pokemans, let me show you them</a></i>, but because I have to personally maintain four different CSS files. And that number is only going to get larger. <i>Much</i> larger. That scares me a little.
+<p>
+Most of all, what I've learned from this exercise in site theming is that <b>CSS is kind of painful</b>. I fully support CSS as a (mostly) functional <a href="http://www.codinghorror.com/blog/2008/05/understanding-model-view-controller.html">user interface Model-View-Controller</a>. But even if you have extreme HTML hygiene and Austrian levels of discipline, CSS has some <a href="http://en.wikipedia.org/wiki/Cascading_Style_Sheets#Limitations">serious limitations</a> in practice.
+<p>
+Things in particular that bite us a lot:
+<p>
+<ul>
+<li>Vertical alignment is a giant, hacky PITA. (Tables work great for this though!)
+<li>Lack of variables so we have to repeat colors all over the place.
+<li>Lack of nesting so we have to repeat huge blocks of CSS all over the place.
+</ul>
+<p>
+In short, CSS violates the living crap out of <a href="http://www.codinghorror.com/blog/2007/03/curlys-law-do-one-thing.html">the DRY principle</a>. You are <i>constantly</i> and <i>unavoidably</i> repeating yourself.
+<p>
+That's why I'm so intrigued by two Ruby gems that attempt to directly address the deficiencies of CSS.
+<p>
+1. <b><a href="http://lesscss.org/">Less CSS</a></b>
+<p>
+<table width="700">
+<tr>
+<td valign="top">
+<pre>
+/* CSS */
+
+#header {
+  -moz-border-radius: 5;
+  -webkit-border-radius: 5;
+  border-radius: 5;
+}
+
+#footer {
+  -moz-border-radius: 10;
+  -webkit-border-radius: 10;
+  border-radius: 10;
+}
+</pre>
+</td>
+<td valign="top">
+<pre>
+// LessCSS
+
+.rounded_corners (@radius: 5px) {
+  -moz-border-radius: @radius;
+  -webkit-border-radius: @radius;
+  border-radius: @radius;
+}
+
+#header {
+  .rounded_corners;
+}
+
+#footer {
+  .rounded_corners(10px);
+}
+</pre>
+</td>
+</table>
+<p>
+2. <b><a href="http://sass-lang.com/">SASS</a></b>
+<p>
+<table width="700">
+<tr>
+<td valign="top">
+<pre>
+/* CSS */
+
+.content_navigation {
+  border-color: #3bbfce;
+  color: #2aaebd;
+}
+
+.border {
+  padding: 8px;
+  margin: 8px;
+  border-color: #3bbfce;
+}
+</pre>
+</td>
+<td valign="top">
+<pre>
+// Sass
+
+!blue = #3bbfce
+!margin = 16px
+
+.content_navigation
+  border-color = !blue
+  color = !blue - #111
+
+.border
+  padding = !margin / 2
+  margin = !margin / 2
+  border-color = !blue
+</pre>
+</td>
+</tr>
+</table>
+<p>
+As you can see, in both cases we're <b>transmogrifying CSS into a bit more of a programming language</b>, rather than the static set of layout rules it currently exists as. Behind the scenes, we're generating plain vanilla CSS using these little dynamic languages. This could be done at project build time, or even dynamically on every page load if you have a good caching strategy.
+<p>
+I'm not sure how many of these improvements <a href="http://www.w3.org/Style/CSS/current-work">CSS3</a> will bring, never mind when the bulk of browsers in the world will support it. But I definitely feel that the core changes identified in both <a href="http://lesscss.org/">Less CSS</a> and <a href="http://sass-lang.com/">SASS</a> address very real pain points in practical CSS use. It's worth checking them out to understand why they exist, what they bring to the table, and how you could possibly adopt some of these strategies in your own CSS and your favorite programming language.
+<p>
+<table> 
+<tr><td class="welovecodinghorror"> 
+[advertisement] <a href="http://www.atlassian.com/starter-day/?utm_source=Coding%2BHorror&utm_medium=Text%2BAd&utm_campaign=Starter%2BDay" rel="nofollow">Atlassian Starter Day</a> - Learn how startups like Boxee and Pandora broke through. <a href="http://www.atlassian.com/starter-day/?utm_source=Coding%2BHorror&utm_medium=Text%2BAd&utm_campaign=Starter%2BDay" rel="nofollow">Sign-up today »</a>
+</td></tr> 
+</table> 
+<p>
+
+	
+
+<!-- ad unit -->
+<!-- this is where the inline ad unit will go -->
+<!-- ad unit -->	
+	
+	
+	<div class="posted">Posted by Jeff Atwood &nbsp;&nbsp; 
+		
+			<!-- comment count -->
+				<a href="http://www.codinghorror.com/blog/2010/04/whats-wrong-with-css.html#comments">85 Comments</a>
+			
+		
+		
+		
+	</div> 
+	
+	</div>	
+ 
+
+<div>
+	
+</div>
+
+
+ 
+	
+	<h2 class="date"> 
+		April 21, 2010
+	</h2> 
+	
+ 
+	<div class="blogbody"> 
+	
+	<a name="so_youd_like_to_send_some_email_through_code"></a> 
+	<h3 class="title"><a href="http://www.codinghorror.com/blog/2010/04/so-youd-like-to-send-some-email-through-code.html" class="title-link">So You'd Like to Send Some Email (Through Code)</a></h3> 
+	
+
+<p>
+I have what I would charitably describe as a <a href="http://www.google.com/search?q=site:codinghorror.com+email">hate-hate</a> relationship with email. I desperately try to avoid sending email, not just for myself, but also in the code I write.
+<p>
+Despite my misgivings, <b>email is the cockroach of communication mediums: <i>you just can't kill it</i></b>. Email is the one method of online contact that almost everyone -- at least for that subset of "everyone" which includes people who can bear to touch a computer at all -- is guaranteed to have, and use. Yes, you can make a fairly compelling case that email is <a href="http://www.techdirt.com/articles/20071114/144228.shtml">for old stupid people</a>, but let's table that discussion for now.
+<p>
+So, reluctantly, we come to the issue of <b>sending email through code</b>. It's easy! Let's send some email through oh, I don't know, let's say ... Ruby, courtesy of some sample code I found while <a href="http://stackoverflow.com/questions/tagged/ruby">browsing the Ruby tag</a> on Stack Overflow.
+<p>
+<pre>
+require 'net/smtp'
+
+def send_email(to, subject = "", body = "")
+    from = "my@email.com"
+    body= "From: #{from}\r\nTo: #{to}\r\nSubject: #{subject}\r\n\r\n#{body}\r\n"
+
+    Net::SMTP.start('192.168.10.213', 25, '192.168.0.218') do |smtp|
+        smtp.send_message body, from, to
+    end
+end
+
+send_email "foo@example.com", "title", "body goes here"
+</pre>
+<p>
+There's a bug in this code, though. Do you see it?
+<p>
+<b>Just because you <i>send</i> an email doesn't mean it will arrive.</b> Not by a long shot. Bear in mind this is <i>email</i> we're talking about. It was never designed to survive a bitter onslaught of criminals and spam, not to mention the explosive, exponential growth it has seen over the last twenty years. Email is a well that has been truly and thoroughly poisoned -- the digital equivalent of a superfund cleanup site. The ecosystem around email is a dank miasma of half-implemented, incompletely supported anti-spam hacks and workarounds.
+<p>
+Which means the odds of that random email your code just sent getting to its specific destination is .. spotty. At best.
+<p>
+If you want email your code sends to actually <i>arrive</i> in someone's AOL mailbox, to <a href="http://www.fastcompany.com/magazine/18/voice.html">the dulcet tones of "You've Got Mail!"</a>, there are a few things you must do first. And most of them are only peripherally related to writing code.
+<p>
+<b>1. Make sure the computer sending the email has a Reverse PTR record</b>
+<p>
+What's a <a href="http://aplawrence.com/Blog/B961.html">reverse PTR record</a>? It's something your ISP has to configure for you -- a way of verifying that the email you send from a particular IP address actually belongs to the domain it is purportedly from.
+<p>
+<blockquote>
+Not every IP address has a corresponding PTR record. In fact, if you took a random sampling of addresses your firewall blocked because they were up to no good, you'd probably find most have no PTR record - a dig -x gets you no information. That's also apt to be true for mail spammers, or their PTR doesn't match up: if you do a dig -x on their IP you get a result, but if you look up that result you might not get the same IP you started with.
+<p>
+That's why PTR records have become important. Originally, PTR records were just intended as a convenience, and perhaps as a way to be neat and complete. There still are no requirements that you have a PTR record or that it be accurate, but because of the abuse of the internet by spammers, certain conventions have grown up. For example, you may not be able to send email to some sites if you don't have a valid PTR record, or if your pointer is "generic".
+<p>
+How do you get a PTR record? You might think that this is done by your domain registrar - after all, they point your domain to an IP address. Or you might think whoever handles your DNS would do this. But the PTR record isn't up to them, it's up to the ISP that "owns" the IP block it came from. They are the ones who need to create the PTR record.
+</blockquote>
+<p>
+A reverse PTR record is critical. How critical? <font color="red">Don't even bother reading any further until you've verified that your ISP has correctly configured the reverse PTR record for the server that will be sending email</font>. It is absolutely the most common check done by mail servers these days. Fail the reverse PTR check, and I guarantee that a <i>huge</i> percentage of the emails you send will end up in the great bit bucket in the sky -- and not in the email inboxes you intended.
+<p>
+<b>2. Configure DomainKeys Identified Mail in your DNS and code</b>
+<p>
+What's <a href="http://en.wikipedia.org/wiki/DKIM">DomainKeys Identified Mail</a>? With DKIM, you "sign" every email you send with your private key, a key only <i>you</i> could possibly know. And this can be verified by attempting to decrypt the email using the public key stored in your public DNS records. It's really quite clever!
+<p>
+The first thing you need to do is generate some public-private key pairs (one for every domain you want to send email from) via OpenSSL. I used <a href="http://www.slproweb.com/products/Win32OpenSSL.html">a win32 version I found</a>. Issue these commands to produce the keys in the below files:
+<p>
+<pre>
+$ openssl genrsa -out rsa.private 1024
+$ openssl rsa -in rsa.private -out rsa.public -pubout -outform PEM
+</pre>
+<p>
+These public and private keys are just big ol' Base64 encoded strings, so plop them in your code as configuration string resources that you can retrieve later.
+<p>
+Next, add some DNS records. You'll need two new TXT records. 
+<p>
+<ol>
+<li><font color="red">_domainkey</font>.example.com<br>
+"o=~\; r=contact@example.com"
+<li><font color="red">selector._domainkey</font>.example.com<br>
+"k=rsa\; p={public-key-base64-string-here}"
+</ol>
+<p>
+The first TXT DNS record is the global DomainKeys policy and contact email.
+<p>
+The second TXT DNS record is the public base64 key you generated earlier, as one giant unbroken string. Note that the "selector" part of this record can be anything you want; it's basically just a disambiguating string. 
+<p>
+Almost done. One last thing -- we need to sign our emails before sending them. In any rational world this would be handled by an email library of some kind. We use <a href="http://www.afterlogic.com/products/net-email-components">Mailbee.NET</a> which makes this fairly painless:
+<p>
+<pre>
+smtp.Message = dk.Sign(smtp.Message, 
+               null, <font color="red">AppSettings.Email.DomainKeyPrivate</font>, false, "selector");
+</pre>
+<p>
+<p>
+<b>3. Set up a SenderID record in your DNS</b>
+<p>
+To be honest, <a href="http://en.wikipedia.org/wiki/Sender_ID">SenderID</a> is a bit of a "nice to have" compared to the above two. But if you've gone this far, you might as well go the distance. SenderID, while a little antiquated and kind of.. Microsoft/Hotmail centric.. doesn't take much additional effort. 
+<p>
+SenderID isn't complicated. It's another TXT DNS record at the root of, say, example.com, which contains a specially formatted string documenting all the allowed IP addresses that mail can be expected to come from. Here's an example:
+<p>
+<pre>
+"v=spf1 a mx ip4:10.0.0.1 ip4:10.0.0.2 ~all"
+</pre>
+<p>
+You can use the <a href="http://www.microsoft.com/mscorp/safety/content/technologies/senderid/wizard/">Sender ID SPF Record Wizard</a> to generate one of these for each domain you send email from.
+<p>
+<b>That sucked. How do I know all this junk is working?</b>
+<p>
+I agree, it sucked. Email sucks; what did you expect? I used two methods to verify that all the above was working:
+<p>
+<ol>
+<li>Test emails sent to a GMail account.<br><br>
+Use the "show original" menu on the arriving email to see the raw message content as seen by the email server. You want to verify that the headers definitely contain the following:
+<p>
+<pre>
+Received-SPF: pass
+Authentication-Results: ... spf=pass ... dkim=pass
+</pre>
+<p>
+If you see that, then the Reverse PTR and DKIM signing you set up is working. Google provides <i>excellent</i> diagnostic feedback in their email server headers, so if something isn't working, you can usually discover enough of a hint there to figure out why.
+<li>Test emails sent to the Port25 email verifier<br><br>
+Port25 offers a really nifty public service -- you can send email to check-auth@verifier.port25.com and it will reply to the from: address with an extensive diagnostic! Here's an example summary result from a test email I just sent to it:
+<p>
+<pre>
+SPF check:          pass
+DomainKeys check:   fail
+DKIM check:         pass
+Sender-ID check:    pass
+SpamAssassin check: ham
+</pre>
+<p>
+You want to pass SPF, DKIM, and Sender-ID. Don't worry about the DomainKeys failure, as I believe it is spurious -- DKIM is the "newer" version of that same protocol.
+<p>
+</ol>
+<p>
+Yes, the above three steps are quite a bit of work just to send a lousy email. But I don't send email lightly. By the time I've reached the point where I am forced to write code to send out email, <b>I really, <i>really</i> want those damn emails to arrive</b>. By any means necessary.
+<p>
+And for those who are the unfortunate recipients of these emails: my condolences.
+<p>
+<table> 
+<tr><td class="welovecodinghorror"> 
+[advertisement] <a href="http://www.atlassian.com/hosted/studio/?utm_source=Coding%2BHorror&utm_medium=Text%2BAd&utm_content=B&utm_campaign=Studio%2B2.1">JIRA Studio</a> - SVN hosting, issue tracking, CI and Google Apps integration. <a href="http://www.atlassian.com/hosted/studio/?utm_source=Coding%2BHorror&utm_medium=Text%2BAd&utm_content=B&utm_campaign=Studio%2B2.1" rel="nofollow">Free trial »</a> 
+</td></tr> 
+</table> 
+<p>
+
+	
+
+<!-- ad unit -->
+<!-- this is where the inline ad unit will go -->
+<!-- ad unit -->	
+	
+	
+	<div class="posted">Posted by Jeff Atwood &nbsp;&nbsp; 
+		
+			<!-- comment count -->
+				<a href="http://www.codinghorror.com/blog/2010/04/so-youd-like-to-send-some-email-through-code.html#comments">61 Comments</a>
+			
+		
+		
+		
+	</div> 
+	
+	</div>	
+ 
+
+<div>
+	
+</div>
+
+
+ 
+	
+	<h2 class="date"> 
+		April  4, 2010
+	</h2> 
+	
+ 
+	<div class="blogbody"> 
+	
+	<a name="three_monitors_for_every_user"></a> 
+	<h3 class="title"><a href="http://www.codinghorror.com/blog/2010/04/three-monitors-for-every-user.html" class="title-link">Three Monitors For Every User</a></h3> 
+	
+
+<p>
+As far as I'm concerned, you can never be too rich, too thin, or have too much screen space. By "screen", I mean not just large monitors, but <i>multiple</i> large monitors. I've been evangelizing multiple monitors since the dark days of <a href="http://en.wikipedia.org/wiki/Windows_Me">Windows Millennium Edition</a>:
+<p>
+<ul> 
+<li><a href="http://www.codinghorror.com/blog/archives/000012.html">Multiple Monitors and Productivity</a> 
+<li><a href="http://www.codinghorror.com/blog/archives/000217.html">Multiple LCDs</a> 
+<li><a href="http://www.codinghorror.com/blog/archives/000740.html">Joining the Prestigious Three Monitor Club</a> 
+<li><a href="http://www.codinghorror.com/blog/archives/000928.html">The Large Display Paradox</a> 
+<li><a href="http://www.codinghorror.com/blog/archives/000959.html">LCD Monitor Arms</a> 
+</ul> 
+<p>
+If you're a long time reader you're probably sick of hearing about this stuff by now, but something rather wonderful has happened since I last wrote about it:
+<p>
+<blockquote>
+If you're only using one monitor, you are cheating yourself out of potential productivity. Two monitors is a no-brainer. It's so fundamental that I included it as a part of the <a href="http://www.codinghorror.com/blog/2006/08/the-programmers-bill-of-rights.html">Programmer's Bill of Rights</a>.
+<p>
+But you can do better.
+<p>
+<b>As good as two monitors is, three monitors is even better</b>. With three monitors, there's a "center" to focus on. And 50% more display area. While there's certainly a point of diminishing returns for additional monitors, I think three is the sweet spot. Even Edward Tufte, in the <a href="http://www.codinghorror.com/blog/archives/000739.html">class I recently attended</a>, explicitly mentioned multiple monitors. I don't care how large a single display can be; you can never have enough desktop space.
+<p>
+Normally, to achieve three monitors, you have to either:
+<p>
+<ol>
+<li>Buy an exotic video card that has more than 2 monitor connections.
+<li>Install a second video card.
+</ol>
+</blockquote>
+<p>
+Fortunately, that is no longer true. I was excited to learn that the latest ATI video cards have gone from two to three video outputs. Which means <b>you can now achieve triple monitors with a single video card upgrade!</b>  They call this <a href="http://sites.amd.com/us/underground/products/eyefinity/Pages/eyefinity.aspx">"eyefinity"</a>, but it's really just shorthand for "raising the standard from two display outputs to three". 
+<p>
+But, there is a (small) catch. The PC ecosystem is in the middle of shifting display output standards. For evidence of this, you need look no further than the back panel of one of these newfangled triple display capable ATI video cards:
+<p>
+<img alt="Radeon-eyefinity-video-card-outputs" title="Radeon-eyefinity-video-card-outputs" src="http://www.codinghorror.com/.a/6a0120a85dcdae970b01347fa6c999970c-800wi" border="0"  />
+<p>
+It contains:
+<p>
+<ul>
+<li>two DVI outputs 
+<li>one HDMI output
+<li>one <a href="http://en.wikipedia.org/wiki/DisplayPort">DisplayPort</a> output
+</ul>
+<p>
+I suspect part of this odd connector layout is due to space restrictions (DVI is awfully chunky), but I've always understood DisplayPort to be the new, improved DVI connector for computer monitors, and HDMI to be the new, improved s-video/component connector for televisions. Of course these worlds are blurring, as <a href="http://www.codinghorror.com/blog/2006/12/will-your-next-computer-monitor-be-a-hdtv.html">modern high-definition TVs make surprisingly effective computer monitors</a>, too.
+<p>
+Anyway, since all my monitors have only DVI inputs, I wasn't sure what to do with the other output. So <a href="http://superuser.com/questions/118957/converting-displayport-and-or-hdmi-to-dvi-d">I asked on Super User</a>. The helpful answers led me to discover that, as I suspected, the third output has to be DisplayPort. So to connect my third monitor, I needed to <b>convert DisplayPort to DVI</b>, and there are two ways:
+<p>
+<ol>
+<li>a <a href="http://www.amazon.com/dp/B0007MWE1Y/?tag=codinghorror-20">passive, analog DisplayPort to DVI conversion cable</a> for ~$30 that supports up to 1920x1200
+<li>an <a href="http://www.amazon.com/dp/B002ISVI3U/?tag=codinghorror-20">active, digital DisplayPort to DVI converter</a> for $110 that supports all resolutions
+</ol>
+<p>
+I ended up going with the active converter, which has mixed reviews, but it's worked well for me over the last few weeks. 
+<p>
+<a href="http://www.amazon.com/dp/B002ISVI3U/?tag=codinghorror-20"><img class="asset  asset-image at-xid-6a0120a85dcdae970b01347fa6eaab970c" alt="Accell-ultraav-displayport-to-dvi-adapter" title="Accell-ultraav-displayport-to-dvi-adapter" src="http://www.codinghorror.com/.a/6a0120a85dcdae970b01347fa6eaab970c-800wi" border="0"  /></a>
+<p>
+Note that this adapter requires USB power, and given the spotty results others have had with it, some theorize that it needs quite a bit of juice to work reliably. I plugged it into my system's nearby rear USB ports which do tend to deliver more power (they're closer to the power supply, and have short cable paths). Now, I <i>have</i> gotten the occasional very momentary black screen with it, but nothing severe enough to be a problem or frequent enough to become a pattern. If you have DisplayPort compatible monitors, of course, this whole conversion conundrum is a complete non-issue. But DisplayPort is fairly new, and even my new-ish LCD monitors don't support it yet.
+<p>
+The cool thing about this upgrade, besides <a href="http://www.codinghorror.com/blog/2008/11/feeding-my-graphics-card-addiction.html">feeding my video card addiction</a>, is that <b>I was able to simplify my hardware configuration</b>. That's always good. I went from two video cards to one, which means less power consumption, simpler system configuration, and fewer overall driver oddities. Basically, it makes triple monitors -- dare I say it -- almost a <i>mainstream</i> desktop configuration. How could I not be excited about that?
+<p>
+I was also hoping that Nvidia would follow ATI's lead here and <b>make three display outputs the standard for all their new video cards</b>, too, but sadly that's not the case. It turns out their new GTX 480 fails in other ways, in that <a href="http://www.maximumpc.com/article/features/nvidias_hot_rod_gtx_480_powerful_and_power_hungry?page=0,1">it's basically the Pentium 4 of video cards</a> -- generating ridiculous amounts of heat for very little performance gain. Based on those two facts, I am comfortable endorsing ATI wholeheartedly at this point. But, do be careful, because not all ATI cards support triple display outputs (aka "eyefinity"). These are the ones that I know do:
+<p>
+<p>
+<ul>
+<li><a href="http://www.amazon.com/dp/B0033WSDO2/?tag=codinghorror-20">Radeon HD 5670</a> (~$100) 
+<li><a href="http://www.amazon.com/dp/B002SP113K/?tag=codinghorror-20">Radeon HD 5770</a> (~$150) 
+<li><a href="http://www.amazon.com/dp/B0039YOMZI/?tag=codinghorror-20">Radeon HD 5830</a> (~$250) 
+<li><a href="http://www.amazon.com/dp/B002QEBGGA/?tag=codinghorror-20">Radeon HD 5850</a> (~$320) 
+<li><a href="http://www.amazon.com/dp/B003D0QQJS/?tag=codinghorror-20">Radeon HD 5870</a> (~$450)  
+</ul>
+<p>
+Unless you're a gamer, there's no reason to care about anything other than the least expensive model here, which will handily <i>crush</i> any 2D or 3D desktop GUI acceleration needs you might have. As an addict, of course I bought the high end model and it absolutely did not disappoint -- more than doubling my framerates in the excellent game <a href="http://www.amazon.com/dp/B002NIP2SM/?tag=codinghorror-20">Battlefield: Bad Company 2</a> over the GTX 280 I had <a href="http://www.codinghorror.com/blog/2008/11/feeding-my-graphics-card-addiction.html">before</a>.
+<p>
+I'm excited that a triple monitor setup is now, thanks to ATI, so easily attainable for desktop users -- as long as you're aware of the DisplayPort caveat I discussed above. I'd encourage anyone who is even <i>remotely</i> interested in the (many) productivity benefits of a triple monitor setup to seriously consider an ATI video card upgrade.
+<p>
+<table> 
+<tr><td class="welovecodinghorror"> 
+[advertisement] <a href="http://www.atlassian.com/hosted/studio/?utm_source=Coding%2BHorror&utm_medium=Text%2BAd&utm_content=A&utm_campaign=Studio%2B2.1" rel="nofollow">JIRA Studio</a> - Hosted software development suite. Build better software. Faster. <a href="http://www.atlassian.com/hosted/studio/?utm_source=Coding%2BHorror&utm_medium=Text%2BAd&utm_content=A&utm_campaign=Studio%2B2.1" rel="nofollow">Free trial »</a> 
+</td></tr> 
+</table> 
+<p>
+
+	
+
+<!-- ad unit -->
+<!-- this is where the inline ad unit will go -->
+<!-- ad unit -->	
+	
+	
+	<div class="posted">Posted by Jeff Atwood &nbsp;&nbsp; 
+		
+			<!-- comment count -->
+				<a href="http://www.codinghorror.com/blog/2010/04/three-monitors-for-every-user.html#comments">89 Comments</a>
+			
+		
+		
+		
+	</div> 
+	
+	</div>	
+ 
+
+<div>
+	
+</div>
+
+
+ 
+	
+	<h2 class="date"> 
+		March 31, 2010
+	</h2> 
+	
+ 
+	<div class="blogbody"> 
+	
+	<a name="usability_on_the_cheap_and_easy"></a> 
+	<h3 class="title"><a href="http://www.codinghorror.com/blog/2010/04/usability-on-the-cheap-and-easy.html" class="title-link">Usability On The Cheap and Easy</a></h3> 
+	
+
+<p>
+Writing code? That's the easy part. Getting your application <a href="http://www.codinghorror.com/blog/2007/01/shipping-isnt-enough.html">in the hands of users</a>, and creating applications that <a href="http://www.codinghorror.com/blog/2004/11/youll-never-have-enough-cheese.html">people actually want to use</a> -- now that's the hard stuff.
+<p>
+I've been a long time fan of Krug&#39;s book <a href="http://www.amazon.com/exec/obidos/ASIN/0321344758/codinghorror-20">Don&#39;t Make Me Think</a>. Not just because it's a quick, easy read (and it is!) -- but because it's the most concise and most approachable book I've ever found to teach the fundamental importance of usability. As far as I'm concerned, if you want to help us make the software industry a saner place, the first step is getting <a href="http://www.amazon.com/exec/obidos/ASIN/0321344758/codinghorror-20">Don&#39;t Make Me Think</a> in the hands of as many of your coworkers as you can. <b>If you don't have people that care about usability on your project, your project is doomed</b>.
+<p>
+Beyond getting people over the hurdle of at least <i>paging through</i> the Krug book, and perhaps begrudgingly conceding that this usability stuff <i>matters</i>, the next challenge is figuring out how to integrate usability testing into your project. It's easy to say "Usability is Important!", but you have to walk the walk, too. I touched on some low friction ways to get started in <a href="http://www.codinghorror.com/blog/2007/01/low-fi-usability-testing.html">Low-Fi Usability Testing</a>. That rough outline is now available in handy, more complete book form -- <a href="http://www.amazon.com/dp/0321657292/?tag=codinghorror-20">Rocket Surgery Made Easy: The Do-It-Yourself Guide to Finding and Fixing Usability Problems</a>. 
+<p>
+<a href="http://www.amazon.com/dp/0321657292/?tag=codinghorror-20"><img alt="Rocket-surgery-made-easy" title="Rocket-surgery-made-easy" src="http://www.codinghorror.com/.a/6a0120a85dcdae970b0128779b90b1970c-800wi" border="0" style="border:1px solid silver;" /></a>
+<p>
+Don't worry, Krug's book is just as usable as his advice. It's yet another quick, easy read. Take it from the man himself:
+<p>
+<ul>
+<li><b>Usability testing is one of the best things people can do to improve Web sites (or almost anything they’re creating that people have to interact with)</b>.
+<li>Since most organizations can’t afford to hire someone to do testing for them
+on a regular basis, everyone should learn to do it themselves. And &hellip;
+<li>I could probably write a pretty good book explaining how to do it.
+</ul>
+<p>
+If you're wondering what the beginner's "how do I boil water?" recipe for software project usability is, stop reading this post and get a copy of <a href="http://www.amazon.com/dp/0321657292/?tag=codinghorror-20">Rocket Surgery Made Easy</a>. Now.
+<p>
+One of the holy grails of usability testing is <a href="http://www.useit.com/eyetracking/">eyetracking</a> -- measuring where people's eyes look as they use software and web pages. Yes, there are clever JavaScript tools that can measure where users move their <i>pointers</i>, but that's only a small part of the story. Where the eye wanders, the pointer may not, and vice-versa. But, who has the time and equipment necessary to conduct an actual eyetracking study? Almost nobody. 
+<p>
+That's where <a href="http://www.amazon.com/dp/0321498364/?tag=codinghorror-20">Eyetracking Web Usability</a> comes in.
+<p>
+<a href="http://www.amazon.com/dp/0321498364/?tag=codinghorror-20"><img class="asset  asset-image at-xid-6a0120a85dcdae970b0120a898e9d6970b" alt="Eyetracking-web-usability" title="Eyetracking-web-usability" src="http://www.codinghorror.com/.a/6a0120a85dcdae970b0120a898e9d6970b-800wi" border="0" /></a>
+<p>
+Eyetracking Web Usability is chock full of incredibly detailed eyetracking data for dozens of websites. Even though you (probably) can't afford to do real eyetracking, you can certainly use this book as a reference. There is enough variety in UI and data that you can map the results, observations, and explanations found here to what <i>your</i> project is doing.
+<p>
+This particular book is rather eyetracking specific, but it's just the latest entry in <a href="http://www.codinghorror.com/blog/2007/04/usability-is-timeless.html">a whole series on usability</a>, and I recommend them all highly. These books are a fount of worthwhile data for anyone who works on software and cares about usability, from one of the most preeminent usability experts on the web.
+<p>
+Usability isn't really cheap or easy. It's an endless war, with innumerable battlegrounds, stretching all the way back to the dawn of computing. But these books, at least, are cheap and easy in the sense that they give you some <b>basic training in <i>fighting the good (usability) fight</i></b>. That's the best I can do, and it's all I'd ask from anyone else I work with.
+<p>
+<table> 
+<tr><td class="welovecodinghorror"> 
+[advertisement] <a href="http://www.atlassian.com/hosted/studio/?utm_source=Coding%2BHorror&utm_medium=Text%2BAd&utm_content=A&utm_campaign=Studio%2B2.1" rel="nofollow">JIRA Studio</a> - Hosted software development suite. Build better software. Faster. <a href="http://www.atlassian.com/hosted/studio/?utm_source=Coding%2BHorror&utm_medium=Text%2BAd&utm_content=A&utm_campaign=Studio%2B2.1" rel="nofollow">Free trial »</a> 
+</td></tr> 
+</table> 
+
+	
+
+<!-- ad unit -->
+<!-- this is where the inline ad unit will go -->
+<!-- ad unit -->	
+	
+	
+	<div class="posted">Posted by Jeff Atwood &nbsp;&nbsp; 
+		
+			<!-- comment count -->
+				<a href="http://www.codinghorror.com/blog/2010/04/usability-on-the-cheap-and-easy.html#comments">28 Comments</a>
+			
+		
+		
+		
+	</div> 
+	
+	</div>	
+ 
+
+<div>
+	
+</div>
+
+
+ 
+	
+	<h2 class="date"> 
+		March 24, 2010
+	</h2> 
+	
+ 
+	<div class="blogbody"> 
+	
+	<a name="the_opposite_of_fitts_law"></a> 
+	<h3 class="title"><a href="http://www.codinghorror.com/blog/2010/03/the-opposite-of-fitts-law.html" class="title-link">The Opposite of Fitts' Law</a></h3> 
+	
+
+<p>
+If you've ever wrangled a user interface, you've probably heard of <a href="http://www.codinghorror.com/blog/2006/08/fitts-law-and-infinite-width.html">Fitts' Law</a>. It's pretty simple -- <b>the larger an item is, and the closer it is to your cursor, the easier it is to click on</b>. Kevin Hale put together <a href="http://particletree.com/features/visualizing-fittss-law/">a great visual summary of Fitts' Law</a>, so rather than over-explain it, I'll refer you there. 
+<p>
+The short version of Fitts' law, to save you all that tedious <i>reading</i>, is this:
+<p>
+<ul>
+<li>Put commonly accessed UI elements on the edges of the screen. Because the cursor automatically stops at the edges, they will be easier to click on.
+<li>Make clickable areas as large as you can. Larger targets are easier to click on.
+</ul>
+<p>
+I know, it's very simple, almost too simple, but humor me by following along with some thought exercises. Imagine yourself trying to click on ...
+<p>
+<ul>
+<li>a 1 x 1 target at a random location
+<li>a 5 x 5 target at a random location
+<li>a 50 x 50 target at a random location
+<li>a 5 x 5 target in the corner of your screen
+<li>a 1 x 100 target at the bottom of your screen
+</ul>
+<p>
+Fitts' Law is mostly common sense, and enjoys enough currency with UI designers that they're likely to know about it even if <a href="http://yokozar.org/blog/archives/194">they don't follow it as religiously as they should</a>. Unfortunately, I've found that designers are much less likely to consider the <i>opposite</i> of Fitts' Law, which is arguably just as important.
+<p>
+If we should make UI elements we <i>want</i> users to click on large, and ideally place them at corners or edges for maximum clickability -- <b>what should we do with UI elements we <i>don't</i> want users to click on?</b> Like, say, the "delete all my work" button?
+<p>
+Alan Cooper, in <a href="http://www.codinghorror.com/blog/2007/06/the-three-faces-of-about-face.html">About Face 3</a>, calls this the ejector seat lever.
+<p>
+<blockquote>
+In the cockpit of every jet fighter is a brightly painted lever that, when pulled, fires a small rocket engine underneath the pilot's seat, blowing the pilot, still in his seat,
+out of the aircraft to parachute safely to earth. Ejector seat levers can only be used
+once, and their consequences are significant and irreversible.
+<p>
+Applications must have ejector seat levers so that users can—occasionally—move
+persistent objects in the interface, or dramatically (sometimes irreversibly) alter the function or behavior of the application. The one thing that must never happen is accidental deployment of the ejector seat.
+<p>
+<img alt="Unintended-ejection-seat-lever-consequences" title="Unintended-ejection-seat-lever-consequences" src="http://www.codinghorror.com/.a/6a0120a85dcdae970b01310fd5f5e9970c-800wi" border="0"  />
+<p>
+The interface design must assure that a user can never inadvertently fire the ejector seat when all he wants to do is make some minor adjustment to the program.
+</blockquote>
+<p>
+I can think of a half-dozen applications I regularly use where <b>the ejector seat button is inexplicably placed right next to the cabin lights button</b>. Let's take a look at our old friend GMail, for example:
+<p>
+<img class="asset  asset-image at-xid-6a0120a85dcdae970b01310fd5e58c970c" alt="Gmail-send-vs-save-now" title="Gmail-send-vs-save-now" src="http://www.codinghorror.com/.a/6a0120a85dcdae970b01310fd5e58c970c-800wi" border="0"  />
+<p>
+I can tell what you're thinking. Did he click <b>Send</b> or <b>Save Now</b>? Well, to tell you the truth, in all the excitement of composing that angry email, I kind of lost track myself. Good thing we can easily undo a sent mail! Oh wait, we <i>totally can't</i>. Consider my seat, or at least that particular rash email, ejected.
+<p>
+It's even worse when I'm archiving emails.
+<p>
+<img alt="Gmail-archive-vs-report-spam" title="Gmail-archive-vs-report-spam" src="http://www.codinghorror.com/.a/6a0120a85dcdae970b01310fd5e9f8970c-800wi" border="0"  />
+<p>
+While there were at least 10 pixels between the buttons in the previous example, here there are all of ... <i>three</i>. Every few days I accidentally click <b>Report Spam</b> when I really meant to click <b>Archive</b>. Now, to Google's credit, they do offer a simple, obvious undo path for these accidental clicks. But I can't help wondering why it is, exactly, that these two buttons with such radically different functionality just <i>have</i> to be right next to each other.
+<p>
+Undo is powerful stuff, but wouldn't it be better still if I wasn't pulling the darn ejector seat lever all the time? Wouldn't it make more sense to put that risky ejector seat lever in a different location, and make it smaller? Consider the WordPress post editor.
+<p>
+<img alt="Wordpress-update-vs-trash" title="Wordpress-update-vs-trash" src="http://www.codinghorror.com/.a/6a0120a85dcdae970b0120a96ef50c970b-800wi" border="0"  />
+<p>
+Here, the common <b>Update</b> operation is large and obviously a button -- it's easy to see and easy to click on. The less common <b>Move to Trash</b> operation is smaller, presented as a vanilla hyperlink, and placed well away from Update.
+<p>
+The next time you're constructing a user interface, you should absolutely follow Fitts' law. It just makes sense. But don't forget to follow the opposite of Fitts' law, too -- uncommon or dangerous UI items should be <i>difficult</i> to click on!
+<p>
+<table> 
+<tr><td class="welovecodinghorror"> 
+[advertisement] <a href="http://www.atlassian.com/software/jira/?s_kwcid=codinghorror&amp;utm_source=codinghorror&amp;utm_medium=referral&amp;utm_campaign=footer_link&amp;utm_content=jira4_from_10" rel="nofollow">JIRA 4</a> - Simplify issue tracking for everyone involved. <a href="http://www.atlassian.com/software/jira/?s_kwcid=codinghorror&amp;utm_source=codinghorror&amp;utm_medium=referral&amp;utm_campaign=footer_link&amp;utm_content=jira4_from_10" rel="nofollow">Get started</a> from $10 for 10 users.
+</td></tr> 
+</table> 
+<p>
+
+	
+
+<!-- ad unit -->
+<!-- this is where the inline ad unit will go -->
+<!-- ad unit -->	
+	
+	
+	<div class="posted">Posted by Jeff Atwood &nbsp;&nbsp; 
+		
+			<!-- comment count -->
+				<a href="http://www.codinghorror.com/blog/2010/03/the-opposite-of-fitts-law.html#comments">117 Comments</a>
+			
+		
+		
+		
+	</div> 
+	
+	</div>	
+ 
+
+<div>
+	
+</div>
+
+
+ 
+	
+	<h2 class="date"> 
+		March 19, 2010
+	</h2> 
+	
+ 
+	<div class="blogbody"> 
+	
+	<a name="compiled_or_bust"></a> 
+	<h3 class="title"><a href="http://www.codinghorror.com/blog/2010/03/compiled-or-bust.html" class="title-link">Compiled or Bust?</a></h3> 
+	
+
+<p>
+While I may have <a href="http://www.codinghorror.com/blog/2009/06/all-abstractions-are-failed-abstractions.html">mixed emotions toward LINQ to SQL</a>, we've had great success with it on Stack Overflow. That's why I was <a href="http://weblogs.asp.net/omarzabir/archive/2008/10/28/solving-common-problems-with-compiled-queries-in-linq-to-sql-for-high-demand-asp-net-websites.aspx">surprised to read the following</a>:
+<p>
+<blockquote>
+If you are building an ASP.NET web application that's going to get thousands of hits per hour, the execution overhead of Linq queries is going to consume too much CPU and make your site slow. There’s a runtime cost associated with each and every Linq Query you write. The queries are parsed and converted to a nice SQL Statement on <i>every</i> hit. It’s not done at compile time because there’s no way to figure out what you might be sending as the parameters in the queries during runtime.
+<p>
+So, if you have common Linq to Sql statements like the following one ..
+<p>
+<pre>
+var query = from widget in dc.Widgets
+            where widget.ID == id && widget.PageID == pageId
+            select widget;
+var widget = query.SingleOrDefault();
+</pre>
+<p>
+..  throughout your growing web application, you are soon going to have scalability nightmares.
+</blockquote>
+<p>
+J.D. Conley <a href="http://www.jdconley.com/blog/archive/2007/11/28/linq-to-sql-surprise-performance-hit.aspx">goes further</a>:
+<p>
+<blockquote>
+So I dug into the call graph a bit and found out the code causing by far the most damage was the creation of the LINQ query object for every call! The actual round trip to the database paled in comparison.
+</blockquote>
+<p>
+I must admit, these results seem ... unbelievable. Querying the database is so slow (relative to typical code execution) that if you have to ask how long it will take, <i>you can't afford it</i>. I have a very hard time accepting the idea that <b>dynamically parsing a Linq query would take longer than round-tripping to the database.</b> Pretend I'm from Missouri: show me. Because I am unconvinced.
+<p>
+All of this is very curious, because Stack Overflow uses naive, uncompiled Linq queries on every page, and we are a top 1,000 website on the public internet by most accounts these days. We get a considerable amount of traffic; the last time I checked it was about 1.5 million pageviews per day. We go to great pains to make sure everything is as fast as we can. We're not as fast as we'd like to be yet, but I think we're doing a reasonable job so far. The journey is still very much underway -- we realize that <a href="http://www.codinghorror.com/blog/2009/01/overnight-success-it-takes-years.html">overnight success takes years</a>.
+<p>
+Anyway, <b>Stack Overflow has dozens to hundreds of plain vanilla uncompiled Linq to SQL queries on every page</b>. What we <i>don't</i> have is "scalability nightmares". CPU usage has been one of our least relevant constraints over the last two years as the site has grown. We've also heard from other development teams, multiple times, that Linq to SQL is "slow". But we've never been able to reproduce this even when armed with a profiler.
+<p>
+Quite the mystery.
+<p>
+Now, it's absolutely true that Linq to SQL has the performance peculiarity both posters are describing. We know that's true because <a href="http://blogs.msdn.com/ricom/archive/2008/01/14/performance-quiz-13-linq-to-sql-compiled-query-cost-solution.aspx">Rico tells us so</a>, and Rico ... well, Rico's <i>the man</i>.
+<p>
+<blockquote>
+In short the problem is that <b>the basic Linq construction (we don’t really have to reach for a complex query to illustrate) results in repeated evaluations of the query if you ran the query more than once.</b>
+<p>
+Each execution builds the expression tree, and then builds the required SQL. In many cases all that will be different from one invocation to another is a single integer filtering parameter. Furthermore, any databinding code that we must emit via lightweight reflection will have to be jitted each time the query runs. Implicit caching of these objects seems problematic because we could never know what good policy is for such a cache -- only the user has the necessary knowledge.
+</blockquote>
+<p>
+It's fascinating stuff; you should <a href="http://blogs.msdn.com/ricom/archive/2007/06/22/dlinq-linq-to-sql-performance-part-1.aspx">read the whole series</a>.
+<p>
+What's unfortunate about Linq in this scenario is that you're intentionally sacrificing something that any <a href="http://www.yafla.com/dforbes/Getting_Real_about_NoSQL_and_the_SQL_Isnt_Scalable_Lie/">old and busted SQL database</a> gives you for free. When you send a garden variety parameterized SQL query through to a traditional SQL database, it's hashed, then matched against existing cached query plans. The computational cost of pre-processing a given query is only paid the first time the database sees the new query. All subsequent runs of that same query use the cached query plan and skip the query evaluation. Not so in Linq to SQL. As Rico said, <b>every single run of the Linq query is fully parsed every time it happens</b>.
+<p>
+Now, there <i>is</i> a way to compile your Linq queries, but I personally find the syntax kind of ... ugly and contorted. You tell me:
+<p>
+<pre>
+Func&lt;Northwinds, IQueryable&lt;Orders&gt;, int&gt; q =
+     CompiledQuery.Compile&lt;Northwinds, int, IQueryable&lt;Orders&gt;&gt;
+                ((Northwinds nw, int orderid) =&gt; 
+                            from o in nw.Orders 
+                            where o.OrderId == orderid 
+                            select o );
+
+Northwinds nw = new Northwinds(conn);
+
+foreach (Orders o in q(nw, orderid))
+{
+}
+</pre>
+<p>
+Anyway, that's neither here nor there; we can confirm the performance penalty of failing to compile our queries ourselves. We recently wrote a one time conversion job against a simple 3 column table containing about 500,000 records. The meat of it looked like this:
+<p>
+<pre>
+db.PostTags.Where(t => t.PostId == this.Id).ToList();
+</pre>
+<p>
+Then we compared it with the SQL variant; note that this is also being auto-cast down to the handy <code>PostTag</code> object as well, so the only difference is whether or not the query itself is SQL.
+<p>
+<pre>
+db.ExecuteQuery<PostTag>(
+   "select * from PostTags where PostId={0}", this.Id).ToList();
+</pre>
+<p>
+On an Intel Core 2 Quad running at 2.83 GHz, the former took <b>422 seconds</b> while the latter took <b>275 seconds</b>.
+<p>
+The penalty for failing to compile this query, across 500k iterations, was 147 seconds. Wow! That's 1.5 times slower! Man, only a <i>BASIC programmer</i> would be dumb enough to skip compiling all their Linq queries. But wait a second, no, wait 147 seconds. Let's do the math, even though I suck at it. Each uncompiled run of the query took less than <b><i>one third of a millisecond</i></b> longer.
+<p>
+At first I was worried that every Stack Overflow page was 1.5 times slower than it should be. But then I realized it's probably more realistic to make sure that any page we generate isn't doing <b>500 freakin' thousand queries!</b>  Have we found ourselves in <a href="http://www.codinghorror.com/blog/2009/01/the-sad-tragedy-of-micro-optimization-theater.html">the sad tragedy of micro-optimization theater</a> ... again? I think we might have. Now I'm just depressed.
+<p>
+While it's arguably correct to say that every compiled Linq query (or for that matter, any compiled anything) will be faster, your decisions should be a bit more nuanced than <b>compiled or bust</b>. How much benefit you get out of compilation depends how many times you're doing it. Rico would be the first to point this out, and in fact <a href="http://blogs.msdn.com/ricom/archive/2008/01/14/performance-quiz-13-linq-to-sql-compiled-query-cost-solution.aspx">he already has</a>:
+<p>
+<pre>
+Testing 1 batches of 5000 selects 
+<p>
+uncompiled  543.48 selects/sec 
+compiled    925.75 selects/sec
+<p>
+Testing 5000 batches of 1 selects 
+<p>
+uncompiled  546.03 selects/sec 
+compiled    461.89 selects/sec
+</pre>
+<p>
+Have I mentioned that Rico is the man? Do you see the inversion here? Either you're doing 1 batch of 5000 queries, or 5000 batches of 1 query. One is dramatically faster when compiled; the other is actually a big honking net negative if you consider the developer time spent converting all those beautifully, wonderfully simple Linq queries to the contorted syntax necessary for compilation. Not to mention the implied code maintenance.
+<p>
+I'm a big fan of compiled languages. Even Facebook will tell you that <a href="http://developers.facebook.com/news.php?story=358&blog=1">PHP is about as half as fast as it should be</a> on a good day with a tailwind. But compilation alone is not the entire performance story. Not even close. If you're compiling something -- whether it's PHP, a regular expression, or a Linq query, don't expect <a href="http://en.wikipedia.org/wiki/No_Silver_Bullet">a silver bullet</a>, or you may end up disappointed.
+<p>
+<table> 
+<tr><td class="welovecodinghorror"> 
+[advertisement] <a href="http://www.atlassian.com/software/jira/?s_kwcid=codinghorror&amp;utm_source=codinghorror&amp;utm_medium=referral&amp;utm_campaign=footer_link&amp;utm_content=jira4_from_10" rel="nofollow">JIRA 4</a> - Simplify issue tracking for everyone involved. <a href="http://www.atlassian.com/software/jira/?s_kwcid=codinghorror&amp;utm_source=codinghorror&amp;utm_medium=referral&amp;utm_campaign=footer_link&amp;utm_content=jira4_from_10" rel="nofollow">Get started</a> from $10 for 10 users.
+</td></tr> 
+</table> 
+<p>
+
+	
+
+<!-- ad unit -->
+<!-- this is where the inline ad unit will go -->
+<!-- ad unit -->	
+	
+	
+	<div class="posted">Posted by Jeff Atwood &nbsp;&nbsp; 
+		
+			<!-- comment count -->
+				<a href="http://www.codinghorror.com/blog/2010/03/compiled-or-bust.html#comments">67 Comments</a>
+			
+		
+		
+		
+	</div> 
+	
+	</div>	
+ 
+
+<div>
+	
+</div>
+
+
+ 
+	
+	<h2 class="date"> 
+		February 22, 2010
+	</h2> 
+	
+ 
+	<div class="blogbody"> 
+	
+	<a name="the_nonprogramming_programmer"></a> 
+	<h3 class="title"><a href="http://www.codinghorror.com/blog/2010/02/the-nonprogramming-programmer.html" class="title-link">The Non-Programming Programmer</a></h3> 
+	
+
+<p>
+I find it difficult to believe, but the reports keep pouring in via Twitter and email: <b>many candidates who show up for programming job interviews can't program. At all.</b> Consider this recent email from Mike Lin:
+<p>
+<blockquote>
+The article <a href="http://www.codinghorror.com/blog/2007/02/why-cant-programmers-program.html">Why Can't Programmers... Program?</a> changed the way I did interviews.  I used to lead off by building rapport. That proved to be too time-consuming when, as you mentioned, the vast majority of candidates were simply non-technical. So I started leading off with technical questions. First progressing from easy to hard questions. Then I noticed I identified the rejects faster if I went the other way &ndash; hard questions first &ndash; so long as the hard questions were still in the "if you don't know this then you can't work here" category.  Most of my interviews still took about twenty minutes, because tough questions take some time to answer and evaluate.  But it was a big improvement over the rapport-building method; and it could be done over the phone.
+<p>
+After reading your article, I started doing code interviews over the phone, using web meetings. My interview times were down to about 15 minutes each to identify people who just can't code&mdash; the vast majority.
+</blockquote>
+<p>
+I wrote that article in 2007, and I am stunned, but not entirely surprised, to hear that  three years later "the vast majority" of so-called programmers who apply for a programming job interview are unable to write the smallest of programs. To be clear, hard is a relative term -- we're not talking about complicated, Google-style graduate computer science interview problems. This is <a href="http://www.codinghorror.com/blog/2007/02/why-cant-programmers-program.html">extremely simple stuff</a> we're asking candidates to do. And they can't. <b>It's the equivalent of attempting to hire a truck driver and finding out that 90 percent of the job applicants can't find the gas pedal or the gear shift.</b>
+<p>
+I agree, it's insane. But it happens every day, and is (apparently) an epidemic hiring problem in our industry. 
+<p>
+You have to get to the simple technical interview questions immediately to screen out the legions of non-programming programmers. <a href="http://www.codinghorror.com/blog/2008/01/getting-the-interview-phone-screen-right.html">Screening over the telephone</a> is a wise choice, as I've noted before. But screening over the internet is even better, and arguably more natural for code.
+<p>
+<blockquote>
+I still wasn't super-happy with having to start up the web meeting and making these guys share their desktops with me.  I searched for other suitable tools for doing short "pen-and-paper" style coding interviews over the web, but I couldn't find any.  So I did what any self-respecting programmer would do.  <a href="http://i.seemikecode.com/">I wrote one</a>.
+<p>
+Man, was it worth it! I schedule my initial technical screenings with job applicants in 15-minute blocks. I'm usually done in 5-10 minutes, sadly. <b>I schedule an actual interview with them if they can at least write simple a 10-line program.</b> That doesn't happen often, but at least I don't have to waste a whole lot of time anymore.
+</blockquote>
+<p>
+Mike adds a disclaimer that his homegrown coding interview tool isn't meant to show off <i>his</i> coding prowess. He needed a tool, so he wrote one -- and thoughtfully shared it with us. There might well be others out there; what online tools do you use to screen programmers?
+<p>
+Three years later, I'm still wondering: <b>why do people who can't write a simple program <i>even entertain the idea</i> they can get jobs as working programmers?</b> Clearly, some of them must be succeeding. Which means our industry-wide interviewing standards for programmers are woefully inadequate, and that's a disgrace. It's degrading to every working programmer.
+<p>
+At least bad programmers <i>can</i> be educated; non-programming programmers are not only hopeless but also cheapen the careers of everyone around them. They must be eradicated, starting with simple technical programming tests that should be a part of <i>every</i> programmer interview.
+<p>
+<table> 
+<tr><td class="welovecodinghorror"> 
+[advertisement] <a href="http://www.atlassian.com/software/jira/?s_kwcid=codinghorror&amp;utm_source=codinghorror&amp;utm_medium=referral&amp;utm_campaign=footer_link&amp;utm_content=jira4_from_10" rel="nofollow">JIRA 4</a> - Simplify issue tracking for everyone involved. <a href="http://www.atlassian.com/software/jira/?s_kwcid=codinghorror&amp;utm_source=codinghorror&amp;utm_medium=referral&amp;utm_campaign=footer_link&amp;utm_content=jira4_from_10" rel="nofollow">Get started</a> from $10 for 10 users.
+</td></tr> 
+</table> 
+<p>
+
+	
+
+<!-- ad unit -->
+<!-- this is where the inline ad unit will go -->
+<!-- ad unit -->	
+	
+	
+	<div class="posted">Posted by Jeff Atwood &nbsp;&nbsp; 
+		
+			<!-- comment count -->
+				<a href="http://www.codinghorror.com/blog/2010/02/the-nonprogramming-programmer.html#comments">242 Comments</a>
+			
+		
+		
+		
+	</div> 
+	
+	</div>	
+ 
+
+<div>
+	
+	
+			
+
+			
+			
+			
+				<a href="http://www.codinghorror.com/blog/page/2/">Read older entries &raquo;</a>
+			
+			
+	
+</div>
+
+ 
+ 
+
+ 
+ 
+<div style="font-size:70%; text-align:right;">Content (c) 2010 <a href="/blog/2004/02/about-me.html">Jeff Atwood</a>. Logo image used with permission of the author. (c) 1993 Steven C. McConnell. All Rights Reserved.</div> 
+ 
+</div> 
+</div> 
+ 
+<div id="links"> 
+ 
+<div class="sidetitle">Recently</div> 
+<div class="side"> 
+
+
+  <a href="http://www.codinghorror.com/blog/2010/06/whatever-happened-to-voice-recognition.html">Whatever Happened to Voice Recognition?</a><br />
+
+  <a href="http://www.codinghorror.com/blog/2010/06/the-vast-and-endless-sea.html">The Vast and Endless Sea</a><br />
+
+  <a href="http://www.codinghorror.com/blog/2010/05/on-working-remotely.html">On Working Remotely</a><br />
+
+  <a href="http://www.codinghorror.com/blog/2010/04/whats-wrong-with-css.html">What's Wrong With CSS</a><br />
+
+  <a href="http://www.codinghorror.com/blog/2010/04/so-youd-like-to-send-some-email-through-code.html">So You'd Like to Send Some Email (Through Code)</a><br />
+
+  <a href="http://www.codinghorror.com/blog/2010/04/three-monitors-for-every-user.html">Three Monitors For Every User</a><br />
+
+  <a href="http://www.codinghorror.com/blog/2010/04/usability-on-the-cheap-and-easy.html">Usability On The Cheap and Easy</a><br />
+
+  <a href="http://www.codinghorror.com/blog/2010/03/the-opposite-of-fitts-law.html">The Opposite of Fitts' Law</a><br />
+
+  <a href="http://www.codinghorror.com/blog/2010/03/compiled-or-bust.html">Compiled or Bust?</a><br />
+
+  <a href="http://www.codinghorror.com/blog/2010/02/the-nonprogramming-programmer.html">The Non-Programming Programmer</a><br />
+
+
+</div>
+
+
+<div class="sidetitle">Resources</div> 
+<div class="side"> 
+<b><a href="/blog/2004/02/recommended-reading-for-developers.html">Recommended Reading</a></b><br /> 
+<b><a href="http://stackoverflow.com">stackoverflow.com</a></b><br/> 
+<b><a href="http://serverfault.com">serverfault.com</a></b><br/> 
+<b><a href="http://superuser.com">superuser.com</a></b><br/> 
+<img src="/favicon.ico" width="16" height="16" style="vertical-align:middle;border:0">&nbsp;&nbsp;<a href="/blog/2004/02/about-me.html">About Me</a> 
+</div> 
+
+ 
+
+<p></p> 
+ 
+
+ 
+
+<div class="welovecodinghorror"> 
+[ad] Is your application eating a lot of RAM? – Find out what's holding your objects in memory. <a href="http://www.red-gate.com/products/ants_memory_profiler/find_memory_leaks_fast.htm?utm_source=codinghorr&utm_medium=textad&utm_term=3229&utm_content=findmemleaksfast&utm_campaign=antsmemoryprofiler" rel="nofollow">Find memory leaks fast</a>.
+</div> 
+ 
+<div class="welovecodinghorror"> 
+[ad] Tired of endless code review emails? Ditch the emails - try peer code review with <a href="http://codecollab.com/" rel="nofollow">Code Collaborator</a>. Also learn tips and tricks with <a href="http://www.codereviewbook.com/?howheard=Coding+Horror" rel="nofollow">this free book</a>.
+</div> 
+ 
+<div class="welovecodinghorror"> 
+[ad] You've maxed out your machine. Now upgrade your career. <a href="http://careers.stackoverflow.com/">Stack Overflow Careers</a> helps the world's top developers get noticed by the world's top employers.
+</div>
+
+<!-- [ad] Got a cool product for developers? Advertise it on Coding Horror! mailto:jatwood@codinghorror.com?subject=Advertising Contact me for rates. --> 
+
+
+ 
+<p></p> 
+
+
+
+<div class="sidetitle">Last Comments</div> 
+<div class="side"> 
+
+
+	<a href="http://www.codinghorror.com/blog/2010/06/whatever-happened-to-voice-recognition.html#endcomments">Whatever Happened to Voice Recognition?</a> (<a href="http://www.codinghorror.com/blog/2010/06/whatever-happened-to-voice-recognition.html#comments">88</a>)<br />
+
+	<a href="http://www.codinghorror.com/blog/2010/06/the-vast-and-endless-sea.html#endcomments">The Vast and Endless Sea</a> (<a href="http://www.codinghorror.com/blog/2010/06/the-vast-and-endless-sea.html#comments">76</a>)<br />
+
+	<a href="http://www.codinghorror.com/blog/2010/05/on-working-remotely.html#endcomments">On Working Remotely</a> (<a href="http://www.codinghorror.com/blog/2010/05/on-working-remotely.html#comments">67</a>)<br />
+
+	<a href="http://www.codinghorror.com/blog/2010/04/whats-wrong-with-css.html#endcomments">What's Wrong With CSS</a> (<a href="http://www.codinghorror.com/blog/2010/04/whats-wrong-with-css.html#comments">85</a>)<br />
+
+	<a href="http://www.codinghorror.com/blog/2010/04/so-youd-like-to-send-some-email-through-code.html#endcomments">So You'd Like to Send Some Email (Through Code)</a> (<a href="http://www.codinghorror.com/blog/2010/04/so-youd-like-to-send-some-email-through-code.html#comments">61</a>)<br />
+
+	<a href="http://www.codinghorror.com/blog/2010/04/three-monitors-for-every-user.html#endcomments">Three Monitors For Every User</a> (<a href="http://www.codinghorror.com/blog/2010/04/three-monitors-for-every-user.html#comments">89</a>)<br />
+
+	<a href="http://www.codinghorror.com/blog/2010/04/usability-on-the-cheap-and-easy.html#endcomments">Usability On The Cheap and Easy</a> (<a href="http://www.codinghorror.com/blog/2010/04/usability-on-the-cheap-and-easy.html#comments">28</a>)<br />
+
+
+</div>
+
+
+ 
+<p></p> 
+<div class="side"> 
+Coding Horror has been continuously published since 2004. Browse the <b><a h href="http://www.codinghorror.com/blog/archives.html">complete post archives</a></b>.
+</div> 
+ 
+<div class="syndicate"> 
+<img src="http://feeds.feedburner.com/~fc/codinghorror?bg=EEEEEE&amp;fg=111111&amp;anim=0" height="26" width="88" style="border:0" alt="Count of RSS readers" /> 
+<br/> 
+<a href="http://my.statcounter.com/project/standard/stats.php?project_id=2600027&guest=1">Traffic Stats</a> 
+<br/> 
+<br/> 
+<a href="http://feeds.feedburner.com/codinghorror" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" width=16 height=16 alt="" style="vertical-align:middle;border:0"/>&nbsp;Subscribe in a reader</a> 
+<br/> 
+ 
+<a href="http://www.feedburner.com/fb/a/emailverifySubmit?feedId=74729"><img src="/blog/images/mail.png" width=16 height=16 alt="" style="vertical-align:middle;border:0"/>&nbsp;Subscribe via email</a> 
+</div> 
+<br/> 
+<br/> 
+
+<a href="http://www.typepad.com/">Powered by TypePad</a>
+
+</div> 
+
+
+ 
+<br clear="all" /> 
+ 
+<script type="text/javascript" language="javascript"> 
+var sc_project=2600027; 
+var sc_invisible=0; 
+var sc_partition=25; 
+var sc_security="dcff5548"; 
+</script> 
+ 
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script> 
+<noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c26.statcounter.com/counter.php?sc_project=2600027&java=0&security=dcff5548&invisible=0" alt="web metrics" border="0"></a> </noscript> 
+ 
+<!-- Start Quantcast tag -->
+<script type="text/javascript" src="http://edge.quantserve.com/quant.js"></script>
+<script type="text/javascript">_qoptions = { tags:"typepad.extended" }; _qacct="p-fcYWUmj5YbYKM"; quantserve();</script>
+<noscript>
+<a href="http://www.quantcast.com/p-fcYWUmj5YbYKM" target="_blank"><img src="http://pixel.quantserve.com/pixel/p-fcYWUmj5YbYKM.gif?tags=typepad.extended" style="display: none" border="0" height="1" width="1" alt="Quantcast"/></a>
+</noscript>
+<!-- End Quantcast tag -->
+</body> 
+</html>
+
+
+ 
+
+<!-- Blogside Toolbar -->
+<script type="text/javascript">
+    var TPToolbar = {
+        src:   "http://www.typepad.com/services/toolbar?blog_id=6a0120a85dcdae970b0128776faab5970c&asset_id=&atype=index&to=http%3A%2F%2Fwww.codinghorror.com%2Fblog%2F&autofollowed=0",
+        asset_xid: "",
+    
+        bookmarklet_uri: "http://static.typepad.com/.shared/js/qp/loader-combined-min.js"
+    };
+    var TYPEPAD___bookmarklet_domain = "http://www.typepad.com/";
+</script>
+<script type="text/javascript" src="/.shared/js/toolbar/blogside-toolbar-combined-min.js"></script>
+<!-- End Blogside Toolbar -->
+<!-- ph=1 -->
+<!-- nhm:from_kauri -->

@@ -1,0 +1,133 @@
+
+<html><head><title>hippiejake.doesntexist.com > Blog</title>
+<link href='/main.css' rel='stylesheet' type='text/css' />
+</head><body>
+<script type="text/javascript">
+var _gaq=_gaq || [];_gaq.push(['_setAccount','UA-16701161-4']);_gaq.push(['_trackPageview']);(function(){var ga=document.createElement('script');ga.type='text/javascript';ga.async=true;ga.src=('https:'==document.location.protocol ? 'https://ssl':'http://www')+'.google-analytics.com/ga.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(ga,s);})();
+</script>
+<div id='headerdiv' class='header'>
+<span id='headertitle' class='header'>
+<img src='/images/title.png' /><br />
+</span>
+<span id='headersubtitle' class='header'>
+it's all new...
+</span>
+<span id='linkcontainer0' class='header headerlinkcontainer'><a id='link0' class='header headerlink' href='http://hippiejake.doesntexist.com/index.py'>Home</a></span>
+<span id='linkcontainer1' class='header headerlinkcontainer'><a id='link1' class='header headerlink' href='http://hippiejake.doesntexist.com/music/index.py'>Music</a></span>
+<span id='linkcontainer2' class='header headerlinkcontainer'><a id='link2' class='header headerlink' href='https://hippiejake.doesntexist.com/login/'>Login</a></span>
+<span id='linkcontainer3' class='header headerlinkcontainer'><a id='link3' class='header headerlink' href='https://hippiejake.doesntexist.com/login/register.py'>Register</a></span>
+</div>
+<div id="main">
+<div class='mainblock'>
+<h1 class='blogtitle'><a href='/view.py?id=10'>Hats off to the Google Engineers</a></h1>
+<h2 class='blogdetails'>
+<span class='blogauthor'> by Jacob Courtneay </span>
+<span class='blogtags'>[
+]</span>
+<span class='blogdate'>2010-05-23 00:57:41.605487</span>
+</h2>
+<div class='blogcontent'><p>OK, so Google's V8 javascript engine is just amazing. While searching for a decent javascript implementation to embed in a potential new project, I found my way to this gem. I never expected a product so tightly integrated into Chrome to be this easy to figure out; Most of these sorts of libraries simply scare me away with the hello world application. This is way different. I took the hello world app and said, "That's it?!?" About 10 minutes later I had a fully functional javasript shell on the console that rivaled the demo shell. The crazy part is that I could do this <strong>without refering to documentation!</strong> I'm sure there will be some problems along the way, but the simplicity I've seen thus far is very encouraging. I rarely say this about complex embedded libraries, but they seem to have done a fine job with this one.</p></div>
+</div>
+<div class='mainblock'>
+<h1 class='blogtitle'><a href='/view.py?id=9'>Fixing "cd //" in bash 4.1</a></h1>
+<h2 class='blogdetails'>
+<span class='blogauthor'> by Jacob Courtneay </span>
+<span class='blogtags'>[
+]</span>
+<span class='blogdate'>2010-05-22 13:13:48.054214</span>
+</h2>
+<div class='blogcontent'><p>How many times have you done this?</p>
+<pre style="font-family: courier, monospace; font-size: smaller;">
+/home/jake$ cd /var/www/html/
+/var/www/html$ # Have you ever been trying to work on something?
+/var/www/html$ cd music
+/var/www/html/music$ ls
+album.py*   albumart/   artist.py~*  index.py~*
+album.py~*  artist.py*  index.py*    track.py*
+/var/www/html/music$ ls -a
+./   .svn/      album.py~*  artist.py*   index.py*   track.py*
+../  album.py*  albumart/   artist.py~*  index.py~*
+/var/www/html/music$ cd album
+-bash: cd: album: No such file or directory
+/var/www/html/music$ cd albumart/
+/var/www/html/music/albumart$ ls
+10_12.jpg  15_34.jpg  1_25.jpg   25_61.jpg  27_76.jpg  34_84.jpg   42_97.jpg
+11_13.jpg  16_35.jpg  1_26.jpg   26_62.jpg  28_77.jpg  34_85.jpg   42_98.jpg
+11_14.jpg  16_36.jpg  20_48.jpg  27_63.jpg  29_78.jpg  35_86.jpg   42_99.jpg
+11_15.jpg  16_37.jpg  20_49.jpg  27_64.jpg  2_27.jpg   35_87.jpg   43_101.jpg
+11_16.jpg  17_38.jpg  20_50.jpg  27_65.jpg  2_28.jpg   36_88.jpg   43_102.jpg
+11_19.jpg  17_39.jpg  20_51.jpg  27_66.jpg  2_4.jpg    36_89.jpg   4_6.jpg
+11_20.jpg  18_40.jpg  21_52.jpg  27_67.jpg  2_42.jpg   36_90.jpg   5_7.jpg
+11_21.jpg  18_41.jpg  21_53.jpg  27_68.jpg  2_43.jpg   36_91.jpg   6_8.jpg
+12_17.jpg  19_46.jpg  21_54.jpg  27_69.jpg  2_44.jpg   37_92.jpg   7_9.jpg
+12_18.jpg  19_47.jpg  22_55.jpg  27_70.jpg  2_45.jpg   38_93.jpg   8_10.jpg
+13_29.jpg  1_1.jpg    22_56.jpg  27_71.jpg  30_79.jpg  38_94.jpg   9_11.jpg
+13_30.jpg  1_2.jpg    23_57.jpg  27_72.jpg  31_80.jpg  39_95.jpg   blank.png
+14_31.jpg  1_22.jpg   23_58.jpg  27_73.jpg  31_81.jpg  3_5.jpg
+15_32.jpg  1_23.jpg   24_59.jpg  27_74.jpg  32_82.jpg  41_96.jpg
+15_33.jpg  1_24.jpg   25_60.jpg  27_75.jpg  33_83.jpg  42_100.jpg
+/var/www/html/music/albumart$ # Then totally fucked up?
+/var/www/html/music/albumart$ cd //
+//$ pwd
+//
+//$ # What the fuck?
+//$ ls
+bin/   dev/  home/  media/  opt/   root/  srv/  sys/  usr/
+boot/  etc/  lib/   music/  proc/  sbin/  svn/  tmp/  var/
+//$ # Sucks, doesn't it?
+</pre>
+
+<p>It happens to me more often than I can count. It's incredibly annoying and even dangerous if you're mucking about in sensitive places on your system. In most cases when this happens, you meant to type "cd .." to go up one folder. Instead, you're placed in some half-assed root directory.</p>
+<p>I was pretty annoyed by this after a couple of times and wanted to fix it. First I tried something like "touch //" or "touch /\/" so that typing "cd //" would fail because it's a file. No dice, it thinks I'm trying to touch the root directory. So I tried an alias; I set up cd to alias to a script which detects the "//" and changes it to ".."  and then executed the chdir(). This didn't work because the script is launched in a subshell and so it's cwd is independent from my shell's. I tried again: alias cd="cd $(mycd)" where mycd echo's the appropriate path. This won't work because afaik there's no way to pass the argument from the outer shell to the inner.</p>
+<p>Needless to say, this greatly frustrated me. In desperation and anger I grabbed <a href="http://ftp.gnu.org/gnu/bash/">The Source</a> and started poking around. After looking at things and a few dumb segfaults, I figured out a [hacky] workaround that's "good enough for me."<p>
+<p>It's <a href="/bash-4.1-cd-bs.diff">a patch to builtins/cd.def</a> in the bash 4.1 tarball. It's only six lines including whitespace, is a dirty hack and probably won't be making it into the main tree anytime soon, but it solved a major headache for myself, so hopefully someone can benefit from it.</p>
+<p>Have fun!</p>
+<p>PS. I'm not sure why "//" is considered a valid path. All other variations on /+ take you to the root, with just one slash. "//" moves you to something called "//", however. Very odd how that one name is somehow different from the others. There could be a valid semantic reason for this behavior I'm unaware of that something depends on, so I wouldn't use this as my system-wide shell before looking into it, just a login shell.</p></div>
+</div>
+<div class='mainblock'>
+<h1 class='blogtitle'><a href='/view.py?id=8'>Just Drive Your Fucking Prius Already.</a></h1>
+<h2 class='blogdetails'>
+<span class='blogauthor'> by Jacob Courtneay </span>
+<span class='blogtags'>[
+]</span>
+<span class='blogdate'>2010-04-10 22:42:04.207272</span>
+</h2>
+<div class='blogcontent'><p>As our technological capabiities continue to expand, we rely on computers for increasingly important functions. While they were once used primarily for email and leisure, computers are now watching over many financial and even physical aspects of our lives. While this fact alone has troubling implications regarding our independence and self-sufficiency, I am currently speaking in concern of the general public's expectations of these systems. We are holding unreasonably high standards for computers, with the Toyota Prius and PG&E SmartMeter cases being prime examples.</p>
+<p>Developing perfectly reliable software is an incredibly difficult goal to reach. A large software project can be more complicated than a fine watch: Countless small parts interact with others, causing cascades of events that must be perfectly synchronized within tight tolerances. Furthermore, if one piece of the program misbehaves, the others must be able to keep running with a minimum of disturbance. There are usually far more ways in which a system can act than can be thoroughly tested. Testers need to consider every possible input in every possible order and ensure that each yields the expected output. This is like testing the security of a door lock by inserting every possible key and ensuring that only one opens the lock; even if it would eventually work, it's foolish to attempt in most cases. However, even if an entire system behaves correctly, it must be able to handle errors beyond its control. "Defensive coding" is necessary to protect against these theoretical errors. What happens if your SmartMeter catches interference from radiation in the atmosphere while it's retrieving your power usage report to send out? What happens of the memory chip holding your cruise control speed is defective? For software developers, two plus two just might equal five every now and then, and it can have devastating results if left unchecked in the wrong situations.</p>
+<p>With all these problems, then, how do we place our money and even our lives in the hands of these machines and expect to be safe? Well, the average consumer just isn't used to seeing these kinds of bugs. If a program on your computer happens to crash, you can just open it back up. In the worst case, you might lose a document or progress in a game. Even in the rare occasion where the entire system goes down, you can usually just reboot it. So even when you notice these bugs, they're not very important because they have no large impact. So consumers carry the expectation that no "major bugs" should exist in software, and then the SmartMeters or the Priuses start malfunctioning.</p>
+<p>The problem is that small and subtle bugs that are otherwise unimportant can cause large consequences when they effect a physical or financial system. These chaotic errors are misunderstood by most consumers. No amount of testing can ever eliminate these bugs, although they can be made very rare. We must either live with imperfection or lessen our reliance on computers. For example, Toyota could have made the brake system on their Prius mechanical rather than piping all driver input through a computer. PG&E might have incorporated a double check into the reporting functionality of their meters. This problem isn't isolated to a couple of companies, and it won't get any better if we just continue to expand the responsibilities of computers, because writing perfect software is much harder than we would like to believe.</p></div>
+</div>
+<div class='mainblock'>
+<h1 class='blogtitle'><a href='/view.py?id=7'>InjectTTY -- An Experiment</a></h1>
+<h2 class='blogdetails'>
+<span class='blogauthor'> by Jacob Courtneay </span>
+<span class='blogtags'>[
+]</span>
+<span class='blogdate'>2010-03-23 23:43:59.385427</span>
+</h2>
+<div class='blogcontent'><p>For so long, I've wondered how I can inject arbitrary commands into another terminal. Writing to a user's stdout is easy, just write to the tty device. But writing to a process' stdin has been another story. I found an interesting program called ttysnoop, but it must be run before the login script, that is, after the pty is spawned but before the user connects to it. It basically clones the file descriptors for that tty and lets root have at them. The problems with this: it requires to be run at startup and requires a visible configuration [/etc/snooptab] to be sitting around. Most other solutions involve a custom kernel.</p>
+<p>Well, while randomly wandering the manpages, I've found another way to at least write to stdin. I still don't know how to read from stdout, but I'm sure it's there somewhere. This little program is just a test, really, it took about 30 minutes once I understood what was happening. It uses tty_ioctl. The tty_ioctl manpage says that ioctl isn't portable and I should use termios, but I couldn't seem to find the documentation for it offline and had no web. So it uses ioctl but I'll look at other options.</p>
+<p>As I've said before, this is just a demo. You can either invoke it with a terminal device and whatever command you like [injectty /dev/pts/1 echo You didn\'t type me\!] or just a device node and it'll do a shitty pseudo-interactive mode. It doesn't read from the terminal's stdout yet, meaning shell prompts and command output isn't shown! I need to find out that part, and improve the interactive crap with either readline support or grabbing from the injection buffer in realtime [not waiting for newline to process input]. If I can do this, it should be just like sitting on the terminal, although I'll still have to figure out how to trap and send ^C et al.</p>
+<p>It's far from being very practical, but this partially solves a question I've been asking myself and others for several months, so it's pretty awesome to me. <a href="/injectty.c">Use the source!</a></p></div>
+</div>
+<div class='mainblock'>
+<h1 class='blogtitle'><a href='/view.py?id=6'>Goodbye, Nexus One!</a></h1>
+<h2 class='blogdetails'>
+<span class='blogauthor'> by Jacob Courtneay </span>
+<span class='blogtags'>[
+]</span>
+<span class='blogdate'>2010-03-22 01:35:12.224553</span>
+</h2>
+<div class='blogcontent'><p>I've returned my Nexus One. This was the first cellphone, let alone smartphone, I've ever owned. The hardware was slick and the software responsive -- The out of the box experience was amazing as far as ordinary use went. But unfortunately, I'm not an ordinary user. After a bit under a month and doing everything possible to it without voiding the warranty, I've discovered a few shortcomings. Some of them are big dealbreakers and some of them are just nitpicky, but together they were enough to keep reminding me of the hefty price tag associated with the Nexus One.</p>
+<p>Most importantly, and most damaging to the typical user experience, is the terrible 3G reception. I'll admit, I walked into the smartphone market with rather high expectations for 3G speeds. I had never really used a 3G device before and expected near-cable speeds. I quickly learned to expect around-DSL speeds. But that's still great. What's not so great, however, is the Nexus One's reception. According to some guy on the internet, it may be hardware. It may be software, although there was supposedly a fix for 3G issued by Google at some point. It may also just be T-Mobile, although there is now a model which works with AT&T. T-Mobile is definitely a suspect, considering how cheap their no-contract unlimited data plan is. Whatever the cause[s], however, this device is sort of broken because of it. 3G works great at home. At school, not so much. At work, not at all. There goes your "immersive internet experience" down the drain.</p>
+<p>I also had a few weird crashes. Most were strange and inexplicable. One strange problem, while not a crash, was also annoying: Android plays a notification tone when it starts up and just before it powers down. There are several built-in notification tones on the internal memory, plus a seemingly undocumented way to use a tone from your SD card. The problem with this is that when starting up, the SD card isn't yet mounted, and when shutting down, it's unmounted early on. So these notification tones the phone is supposed to make aren't accessible. For some unfathomable reason, rather than use the factory default tone ["pixie dust"], the phone lets out a series of piercing beeps. Suddenly your custom sounds aren't so cool after all. Back to "pixie dust," I guess.</p>
+<p>But the second-most important issue for me was the development scene. Now, Android actually has a really active community, it's pretty cool. My problem was how difficult they make it for developers to set up the SDK. I tried the Windows SDK one day and it was great. No thanks, I'd like Linux... and this is where things start getting weird, nevermind that Android is supposedly Linux-based. When I first start looking at a project, I follow the documentation. I install the recommended crap from the recommended places and make sure the Hello World application works. So the system requirements for the SDK state that it's been tested on Ubuntu Hardy LTS. No problem, I install it to a spare box. JDK  5 or higher. Okay, I don't know Java, but how hard can it be? It's not in a repository, but I grab it from Sun and run it. I get a directory filled with all kinds of crap, and no clue where to put it. It's not obvious which binary [there's a bunch] I'm supposed to use, and I'm not really happy with the idea of just tossing it all in /usr/local/bin, either. There's no `make install` and no INSTALL file. Whatever, I'll figure this out later, I tell myself. Next up is Eclipse 3.4 or higher. Lucky me, Eclipse is in the Ubuntu repos, so I'll just apt-get install... Wait, this is Eclipse 3.2! As it turns out, older versions work pretty much just fine with the SDK, and many people don't use Eclipse at all and get by just fine. But this is my first experience with the SDK, and I'm from that sheltered world of UNIX where system requirements are important, the READMEs are worth reading, and when a specific version is tested it usually means that lower versions are unstable! So this really freaks me out a bit: Their "tested" applications on their "tested" Linux platform don't even exist in the official repositories! So... I eventually figured out how to install the SDK and make the Hello World app, but... I was kind of pissed the whole time. Not fun.</p>
+<p>And I suppose I should have expected this, but Android is <em>not</em> UNIX. My Naive Mind thought that if it's Linux, it must be UNIX. Nope. I was hoping to pop a shell and have Bash, I was hoping to use a native SSH client, I was hoping to see an FHS-compliant filesystem, I was hoping to run Python and Perl and I was hoping for UNIX on a phone. Wrong on all accounts! Google is very good at removing everything we know as userspace from the UNIX environment. Although not the most important, this was probably the most heartbreaking realization about Android.</p>
+<p>The Nexus One was good, very good, but not quite enough. So um, hey world, how about you tell me when we finally get a pocket-sized UNIX device that has reliable high-speed internet everywhere? Thanks, I'll actually buy one of those.</p></div>
+</div>
+
+</div>
+<div id="footerdiv" class="footer">
+All content (c) 2010 Jacob Courtneay. <a href="/license.py">Licensed under WTFPL</a> <img src="/images/slack.png" alt="Powered by Slackware" />
+</div>
+<div id="push"></div></body></html>
