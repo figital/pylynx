@@ -5,10 +5,9 @@ class TopWindow(urwid.Pile):
 	def __init__(self, browser):
 		self.browser = browser
 		self.titlebar = TitleBar.TitleBar()
-		#self.text = urwid.Text("Title")
+		self.contentArea = urwid.Pile((urwid.Text(''),))
 		self.urlbar = UrlBar.UrlBar()
-		#super(TopWindow, self).__init__((self.text, self.urlbar), self.urlbar)
-		super(TopWindow, self).__init__((self.titlebar, self.urlbar), self.urlbar)
+		super(TopWindow, self).__init__((self.titlebar, self.urlbar, self.contentArea), self.urlbar)
 
 	def keypress(self, size, key):
 		if key not in ('up', 'down'): # Stop Pile from changing focus

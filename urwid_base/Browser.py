@@ -3,11 +3,13 @@ import xml.dom.minidom
 import urwid
 import BeautifulSoup
 import TopWindow
+import Renderer
 
 class Browser(object):
 	def __init__(self):
 		super(Browser, self).__init__()
 		self.display = TopWindow.TopWindow(self)
+		self.renderer = Renderer.Renderer(self.display)
 		fill = urwid.Filler(self.display, 'top')
 		palette = [('highlighted', 'default,standout', 'default', 'default'),]
 		loop = urwid.MainLoop(fill, palette)
@@ -19,7 +21,7 @@ class Browser(object):
 	def navigate(self, location):
 		self.display.titlebar.status.clear_flags()
 		self.display.titlebar.status['Downloading'] = True
-		source = fetchSource(location)
+		source = self.fetchSource(location)
 		self.display.titlebar.status['Downloading'] = False
 		self.display.titlebar.status['Parsing'] = True
 		soup = BeautifulSoup.BeautifulSoup(source, convertEntities=BeautifulSoup.BeautifulSoup.ALL_ENTITIES)
@@ -29,14 +31,26 @@ class Browser(object):
 
 		dom = xml.dom.minidom.parseString(str(soup.html))
 		self.display.titlebar.status['Parsing'] = False
+		
+		self.renderer.render(dom)
 
-def fetchSource(location):
-	if location[0:8] == 'file:///':
-		return open(location[6:]).read()
-	elif location[0:7] == 'http://':
-		return urllib2.urlopen(location).read()
-	elif location[0:7] == 'https://':
-		raise NotImplementedError()
-	else: # Bad
-		return urllib2.urlopen('http://'+location).read()
+	# The whole resource grabbing architecture will change as I find myself
+	# needing to send POST requests, include cookies, handle HTTP codes, etc.
+	# Therefore, don't put much effort into this yet.
+	def fetchSource(self, location):
+		colonIndex = location.find(':')
+		if colonIndex >= 0: # Use given protocol.
+			protocol = location[:colonIndex]
+			if protocol == 'http':
+				return urllib2.urlopen(location).read()
 
+			elif protocol == 'https':
+				# Later. This will involve root CAs and all sorts of crazy shit.
+				raise NotImplementedError('SSL not yet supported!')
+		
+			elif protocol == 'file':
+				fileName = location[7:]
+				return open(fileName).read()
+
+		else: # Need to guess protocol.
+			raise NotImplementedError('protocol guessing not done yet!')
