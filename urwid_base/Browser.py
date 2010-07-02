@@ -23,16 +23,22 @@ class Browser(object):
 		self.display.titlebar.status['Downloading'] = True
 		source = self.fetchSource(location)
 		self.display.titlebar.status['Downloading'] = False
+
 		self.display.titlebar.status['Parsing'] = True
 		soup = BeautifulSoup.BeautifulSoup(source, convertEntities=BeautifulSoup.BeautifulSoup.ALL_ENTITIES)
-		
+
 		for script in soup.findAll(name='script'):
 			script.replaceWith(BeautifulSoup.CData(str(script.string)))
 
 		dom = xml.dom.minidom.parseString(str(soup.html))
 		self.display.titlebar.status['Parsing'] = False
 		
+
+		self.display.titlebar.status['Rendering'] = True
 		self.renderer.render(dom)
+		self.display.titlebar.status['Rendering'] = False
+
+		self.display.titlebar.status['UserInputNeeded'] = True
 
 	# The whole resource grabbing architecture will change as I find myself
 	# needing to send POST requests, include cookies, handle HTTP codes, etc.
@@ -53,4 +59,4 @@ class Browser(object):
 				return open(fileName).read()
 
 		else: # Need to guess protocol.
-			raise NotImplementedError('protocol guessing not done yet!')
+			raise NotImplementedError('Protocol guessing not done yet!')

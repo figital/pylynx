@@ -1,4 +1,4 @@
-import html
+import HTML
 
 class Renderer(object):
 	def __init__(self, topWindow):
@@ -8,8 +8,11 @@ class Renderer(object):
 	def render(self, dom):
 		self.document = dom
 		self.bodyNode = self.document.getElementsByTagName('body')[0]
-		self.bodyDisplayNode = html.SpecialNode_body(self.bodyNode)
+		try:
+			self.title = self.document.getElementsByTagName('title')[0].childNodes[0].nodeValue
+		except IndexError, e:
+			self.title = self.topWindow.urlbar.get_text()[0]
+
+		self.bodyDisplayNode = HTML.SpecialNode_body(self.bodyNode)
+		self.topWindow.titlebar.title.set_text('pylynx -- ' + self.title)
 		self.topWindow.widget_list[2] = self.bodyDisplayNode
-		#raise Exception(repr( [x for x in self.bodyDisplayNode.widget_list[2].render((80,)).content()] ))
-		#self.topWindow.contentArea._invalidate()
-		#self.topWindow._invalidate()

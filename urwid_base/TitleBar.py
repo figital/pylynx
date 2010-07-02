@@ -5,7 +5,8 @@ class Status(urwid.WidgetWrap):
 	inactive_icon = "-"
 	flags = {'Downloading': False,
 			'Parsing': False,
-			'UiWait': True}
+			'Rendering': False,
+			'UserInputNeeded': True,}
 
 	def __init__(self):
 		self.status_text = urwid.Text('', "right")
@@ -39,7 +40,7 @@ class Status(urwid.WidgetWrap):
 
 class TitleBar(urwid.WidgetWrap):
 	def __init__(self):
-		self.title = urwid.Text("Title")
+		self.title = urwid.Text("pylynx")
 		self.status = Status()
 		self.columns = urwid.Columns((self.title, self.status))
 		super(TitleBar, self).__init__(self.columns)
