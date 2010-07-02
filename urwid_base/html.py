@@ -24,52 +24,14 @@ amended in later versions, when it is seen how large the impact will be on every
 This does not, however, affect the DOM tree.
 """
 
-classFinder = {
-		'p': Node_p,
-		'h1': Node_h1,
-		'h2': Node_h2,
-		'h3': Node_h3,
-		'h4': Node_h4,
-		'h5': Node_h5,
-		'h6': Node_h6,
-		'div': Node_div,
-		'ol': Node_ol,
-		'ul': Node_ul,
-		'li': Node_li,
-		'hr': Node_hr,
-		'pre': Node_pre,
-		'a': Node_a,
-		'em': Node_em,
-		'strong': Node_strong,
-		'i': Node_i,
-		'b': Node_b,
-		'u': Node_u,
-		'span': Node_span,
-		'br': Node_br,
-		'img': Node_img,
-		'font': Node_font,
-		'tt': Node_tt,
-		'code': Node_code,
-		'samp': Node_samp,
-		'kbd': Node_kbd,
-		'ins': Node_ins,
-		'del': Node_del,
-		'strike': Node_strike,
-		'q': Node_q,
-		'#text': SpecialNode_text,
-		'script': SpecialNode_script,
-		'body': SpecialNode_body,
-	}
-
-
 
 class DisplayNode:
 	domNode = None
 	displayParent = None
-	displayChildren = []
 
 	def init(self, domNode):
 		domNode.displayNode = self
+		self.domNode = domNode
 		self.prepareNodes() # Initialize all child elements.
 		self.prepareTree() # Assemble display tree.
 
@@ -81,7 +43,10 @@ class DisplayNode:
 		the root display node, usually <body.>
 		"""
 		for childNode in self.domNode.childNodes:
-			classFinder[childNode.nodeName](childNode)
+			try:
+				classFinder[childNode.nodeName](childNode)
+			except KeyError, e:
+				continue # Unsupported node.
 
 	def prepareTree(self):
 		"""	Assemble nodes into correct hierarchy, taking into account any special cases."""
@@ -91,7 +56,11 @@ class DisplayNode:
 			except AttributeError, e:
 				pass # Special non-display node
 
-		self.domNode.parentNode.displayNode.adopt(self) # Request adoption from DOM parent.
+		self.requestAdoption()
+
+	def requestAdoption(self):
+		"""Request adoption from DOM parent."""
+		self.domNode.parentNode.displayNode.adopt(self)
 
 	def adopt(self, childNode):
 		"""
@@ -113,17 +82,20 @@ class BlockNode(DisplayNode, urwid.Pile):
 	"""
 
 	displayMode = 'block'
+	widget_list = []
 
 	def __init__(self, domNode):
+		if self.widget_list == []:
+			self.widget_list.append(urwid.Text(''))
+		super(BlockNode, self).__init__(self.widget_list)
 		self.init(domNode)
-		super(BlockNode, self).__init__(self.displayChildren)
 
 	def adopt(self, childNode):
-		if childNode in self.displayChildren:
+		if childNode in self.widget_list:
 			return
 		if childNode.displayMode not in ('block', 'inline'): # Probably a special node, toss it into the fire.
 			return
-		self.displayChildren.append(childNode)
+		self.widget_list.append(childNode)
 		childNode.displayParent = self
 
 
@@ -164,50 +136,57 @@ class InlineNode(DisplayNode, urwid.Text):
 
 # Block Nodes
 class SpecialNode_body(BlockNode):
-	pass
+	def requestAdoption(self):
+		pass # This is the root of the display, so there's nobody to ask!
 
 class Node_p(BlockNode):
-	pass
+	pass # TODO: Add indention
 
 class Node_h1(BlockNode):
 	pass
-
 class Node_h2(BlockNode):
 	pass
-
 class Node_h3(BlockNode):
 	pass
-
 class Node_h4(BlockNode):
 	pass
-
 class Node_h5(BlockNode):
 	pass
-
 class Node_h6(BlockNode):
 	pass
-
 class Node_div(BlockNode):
 	pass
 
 class Node_ol(BlockNode):
 	pass
-
 class Node_ul(BlockNode):
 	pass
-
 class Node_li(BlockNode):
 	pass
 
 class Node_hr(BlockNode):
-	associatedWidget = urwid.Divider('-')
+	def __init__(self, domNode):
+		super(Node_hr, self).__init__(domNode)
+		self.widget_list.append(urwid.Divider('-'))
+		self.widget_list[0:len(self.widget_list)-2] = []
 
 class Node_pre(BlockNode):
-	pass
+	pass # Is this even possible after BeautifulSoup and xml.dom? Research!
+
 
 # Inline Nodes
-class SpecialNode_text():
-	pass
+class SpecialNode_text(urwid.Text):
+	displayMode = 'inline'
+	def __init__(self, textNode):
+		assert textNode.nodeName == '#text'
+		if textNode.nodeValue == "\n":
+			return
+		self.domNode = textNode
+		textNode.displayNode = self
+		self.domNode.parentNode.displayNode.adopt(self)
+		super(SpecialNode_text, self).__init__(textNode.nodeValue)
+#		if textNode.nodeValue != "\n":
+#			raise Exception(self.displayParent)
 
 class Node_a(InlineNode):
 	pass
@@ -224,8 +203,12 @@ class Node_u(InlineNode):
 class Node_span(InlineNode):
 	pass
 
-class Node_br(InlineNode):
-	associatedWidget = urwid.Text("\n")
+class Node_br(urwid.Text):
+	def __init__(self, domNode):
+		assert domNode.nodeName == 'br'
+		self.domNode = domNode
+		domNode.displayNode = self
+		super(Node_br, self).__init__("\n")
 
 class Node_font(InlineNode):
 	pass
@@ -255,10 +238,48 @@ class Node_q(InlineNode):
 	pass
 
 # Special non-display Nodes
-class SpecialNode_script():
+class SpecialNode_script:
 	pass
 
 
 # Aliases
 Node_em = Node_i
 Node_strong = Node_b
+
+
+classFinder = {
+		'p': Node_p,
+		'h1': Node_h1,
+		'h2': Node_h2,
+		'h3': Node_h3,
+		'h4': Node_h4,
+		'h5': Node_h5,
+		'h6': Node_h6,
+		'div': Node_div,
+		'ol': Node_ol,
+		'ul': Node_ul,
+		'li': Node_li,
+		'hr': Node_hr,
+		'pre': Node_pre,
+		'a': Node_a,
+		'em': Node_em,
+		'strong': Node_strong,
+		'i': Node_i,
+		'b': Node_b,
+		'u': Node_u,
+		'span': Node_span,
+		'br': Node_br,
+		#'img': Node_img,
+		'font': Node_font,
+		'tt': Node_tt,
+		'code': Node_code,
+		'samp': Node_samp,
+		'kbd': Node_kbd,
+		'ins': Node_ins,
+		'del': Node_del,
+		'strike': Node_strike,
+		'q': Node_q,
+		'#text': SpecialNode_text,
+		'script': SpecialNode_script,
+		'body': SpecialNode_body,
+}
