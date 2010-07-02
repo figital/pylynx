@@ -8,7 +8,7 @@ class TopWindow(urwid.Pile):
 		self.titlebar = TitleBar.TitleBar()
 		self.urlbar = UrlBar.UrlBar()
 
-		self.contentArea = urwid.Pile((urwid.Text('halp'),))
+		self.contentArea = urwid.Pile((urwid.Text(''),))
 
 		self.contents = [self.titlebar, self.urlbar, self.contentArea]
 		super(TopWindow, self).__init__(self.contents, self.urlbar)
@@ -22,7 +22,7 @@ class TopWindow(urwid.Pile):
 
 	def set_focus(self, item):
 		if item is self.urlbar:
-			item.set_edit_text('crap')
+			item.set_edit_text('about:blank')
 			item.begin_focus()
 
 		super(TopWindow, self).set_focus(item)

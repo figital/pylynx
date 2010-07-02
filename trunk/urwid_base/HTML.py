@@ -96,6 +96,15 @@ class BlockNode(DisplayNode, urwid.Pile):
 		if childNode.displayMode not in ('block', 'inline'): # Probably a special node, toss it into the fire.
 			return
 		self.widget_list.append(childNode)
+		self.item_types.append(('weight', 1))
+
+		try:
+			if len(self.widget_list) == 2 and self.widget_list[0].get_text() == ('', []): # Remove the empty leading Text.
+				del self.widget_list[0]
+				del self.item_types[0]
+		except AttributeError, e: # Not a text node, doesn't need removal in any case.
+			pass
+
 		childNode.displayParent = self
 
 
@@ -167,8 +176,9 @@ class Node_li(BlockNode):
 class Node_hr(BlockNode):
 	def __init__(self, domNode):
 		super(Node_hr, self).__init__(domNode)
-		self.widget_list.append(urwid.Divider('-'))
-		self.widget_list[0:len(self.widget_list)-2] = []
+		self.widget_list[0] = urwid.Divider('-')
+		self.widget_list[1:] = []
+		self.item_types = [('weight', 1),]
 
 class Node_pre(BlockNode):
 	pass # Is this even possible after BeautifulSoup and xml.dom? Research!
@@ -185,8 +195,6 @@ class SpecialNode_text(urwid.Text):
 		textNode.displayNode = self
 		self.domNode.parentNode.displayNode.adopt(self)
 		super(SpecialNode_text, self).__init__(textNode.nodeValue)
-#		if textNode.nodeValue != "\n":
-#			raise Exception(self.displayParent)
 
 class Node_a(InlineNode):
 	pass
